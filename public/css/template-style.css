@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300;400;600;700&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Signika Negative', sans-serif;
+}
+:root
+{
+	--primary: #004A99;
+    --secondary: #DFDFDE;
+    --blue: #22577E;
+	--white: #FAF5E4;
+}
+
+body{
+    min-height: 100vh;
+    background: var(--secondary);
+    font-size: 14px;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+.nav-bar
+{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    width: 230px;
+    background: var(--primary);
+    box-shadow: 12px 0 0 var(--white);
+    border-left: 10px solid var(--primary);
+    overflow-y: scroll;
+    scrollbar-width: none;
+    transition: width 0.5s;
+}
+
+.nav-bar.active
+{
+    width: 70px;
+}
+
+.nav-bar ul
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 101%;
+    padding-left: 5px;
+    padding-top: 60px;
+}
+
+.nav-bar ul li
+{
+    position: relative;
+    list-style: none;
+    width: 100%;
+}
+
+.nav-bar ul li.active
+{
+    background: var(--white);
+    list-style: none;
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.nav-bar ul li.active a::before
+{
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 15px 15px 0 var(--white);
+}
+
+.nav-bar ul li.active a::after
+{
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 15px -15px 0 var(--white);
+}
+
+.nav-bar ul li a
+{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.nav-bar ul li.active a
+{
+	color: var(--blue);
+}
+
+.nav-bar ul li a .icon
+{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 45px;
+    left: -5px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.nav-bar ul li a .icon i
+{
+    position: relative;
+    font-size: 1.5em;
+    z-index: 1;
+}
+
+.nav-bar ul li a .title
+{
+    position: relative;
+    display: block;
+    left: -10px;
+    overflow: hidden;
+    height: 45px;
+    line-height: 45px;
+    white-space: nowrap;
+}
+/* end nav-bar */
+
+/* menu bar */
+.menu-bar
+{
+	position: fixed;
+	z-index: 9;
+	width: 100%;
+	left: 242px;
+	top: 0px;
+	height: 50px;
+	background: var(--primary);
+	color: var(--white);
+	transition: 0.5s;
+	box-shadow: 0 0 25px rgba(0,0,0,0.08);
+}
+
+.menu-bar.active
+{
+	width: 100%;
+	left: 82px;
+}
+
+.menu-title
+{
+	position: fixed;
+	transition: 0.5s;
+	left: 290px;
+}
+
+.menu-title h4
+{
+	font-size: 1rem !important;
+	margin-top: 17px !important;
+}
+
+.menu-title.active
+{
+	left: 130px;
+}
+
+.toggle
+{
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.5em;
+	cursor: pointer;
+}
+.toggle:hover
+{
+	font-size: 1.8em;
+}
+/* end menu bar */
+
+/* main */
+.main-content
+{
+    position: relative;
+	width: calc(100% - 247px);
+	left: 242px;
+	top: 60px;
+    padding: 10px;
+	border-radius: 10px;
+	background: var(--secondary);
+	transition: 0.5s;
+}
+
+.main-content.active
+{
+    position: absolute;
+	width: calc(100% - 87px);
+    left: 82px;
+}
+
+/* end main */
+
+/*responsive*/
+@media (max-width: 500px)
+{
+	.nav-bar
+	{
+		width: 70px;
+	}
+	.nav-bar.active
+	{
+		width: 230px;
+	}
+
+	.menu-bar
+	{
+		left: 83px;
+	}
+	.menu-bar.active
+	{
+		left: 243px;
+	}
+
+    .menu-title
+	{
+		left: 133px;
+	}
+	.menu-title.active
+	{
+		left: 283px;
+	}
+
+	.main-content
+	{
+		left: 83px;
+        width: calc(100% - 83px);
+	}
+	.main-content.active
+	{
+		left: 243px;
+	}
+}
