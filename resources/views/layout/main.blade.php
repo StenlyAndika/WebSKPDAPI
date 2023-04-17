@@ -28,7 +28,7 @@
     @include('partials.header')
     
     <div class="row custom-container">
-        @if (Request::is('/'))
+        @if (Request::is('/') || Request::is('login'))
             @yield('container')
         @else
             @include('partials.news')

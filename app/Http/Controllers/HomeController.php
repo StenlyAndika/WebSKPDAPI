@@ -15,7 +15,6 @@ use App\Models\AdminKepuasan;
 use App\Models\AdminPengumuman;
 use App\Models\DashboardProfil;
 use App\Models\AdminPenghargaan;
-use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
@@ -30,7 +29,7 @@ class HomeController extends Controller
         $rules = [
             'nama' => 'required',
             'wa' => 'required',
-            'email' => 'required',
+            'email' => 'required|email:dns',
             'pesan' => 'required'
         ];
 

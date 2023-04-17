@@ -16,16 +16,16 @@ class AdminBerita extends Model
     }
 
     public function allberita($limit) {
-        return AdminBerita::join('admin', 'berita.nama', '=', 'admin.username')
-        ->select('berita.*', 'admin.nama')
+        return AdminBerita::join('user', 'berita.nama', '=', 'user.username')
+        ->select('berita.*', 'user.nama')
         ->orderBy('created_at', 'DESC')
         ->limit($limit)
         ->get();
     }
 
     public function singleberita($slug) {
-        return AdminBerita::join('admin', 'berita.nama', '=', 'admin.username')
-        ->select('berita.*', 'admin.nama')
+        return AdminBerita::join('user', 'berita.nama', '=', 'user.username')
+        ->select('berita.*', 'user.nama')
         ->where('slug', $slug)->first();
     }
 

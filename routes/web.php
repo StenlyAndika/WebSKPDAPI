@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +41,9 @@ Route::get('/publikasi/pengumuman', [HomeController::class, 'pengumuman']);
 
 Route::get('/situs/skpd', [HomeController::class, 'skpd']);
 Route::get('/situs/desa', [HomeController::class, 'desa']);
+
+Route::get('/login', [AuthController::class, 'index'])->middleware('guest');
+Route::post('/login', [AuthController::class, 'authenticate']);
+Route::post('/logout', [AuthController::class, 'logout']);
+
+Route::resource('/dashboard', DashboardController::class)->middleware('admin');

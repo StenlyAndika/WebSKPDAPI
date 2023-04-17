@@ -7,6 +7,9 @@
 
         <nav id="navbar" class="navbar">
             <ul>
+                @can('admin')
+                    <li><a class="nav-link" href="/dashboard">Dashboard Admin</a></li>
+                @endcan
                 <li><a class="nav-link" href="/">Beranda</a></li>
                 <li><a class="nav-link" href="/berita">Berita</a></li>
                 <li class="dropdown"><a href="#">Profil <i class="bi bi-chevron-down"></i></a>

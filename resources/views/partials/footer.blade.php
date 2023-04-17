@@ -75,7 +75,7 @@
 
     <div class="container">
         <div class="copyright">
-            <a class="text-white" href="auth">&copy;</a> Copyright <strong>Dinas Komunikasi Informatika & Statistik Kota Sungai Penuh</strong>. All Rights Reserved
+            <a class="text-white" href="/login">&copy;</a> Copyright <strong>Dinas Komunikasi Informatika & Statistik Kota Sungai Penuh</strong>. All Rights Reserved
         </div>
     <div class="credits">
         Developed by <a href="https://github.com/stenlyandika" target="_blank">Tenaga Ahli Programmer 2022-2023</a>

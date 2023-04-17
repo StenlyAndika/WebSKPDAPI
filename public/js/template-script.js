@@ -13,13 +13,11 @@ list.forEach(
 
 let toggle = document.querySelector('.toggle');
 let menu = document.querySelector('.menu-bar');
-let menutitle = document.querySelector('.menu-title');
 let nav = document.querySelector('.nav-bar');
 let main = document.querySelector('.main-content');
 
 toggle.onclick = function() {
     menu.classList.toggle('active');
-    menutitle.classList.toggle('active');
     nav.classList.toggle('active');
     main.classList.toggle('active');
 }
