@@ -16,6 +16,8 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'home']);
 
+Route::post('/kontak', [HomeController::class, 'kontak']);
+
 Route::get('/berita', [HomeController::class, 'berita']);
 Route::get('/read/{slug}', [HomeController::class, 'read']);
 

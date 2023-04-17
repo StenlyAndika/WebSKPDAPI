@@ -31,7 +31,7 @@
                                         </li>
                                         <li class="list-inline-item" style="color: red; font-size: 14px;">
                                             <i class="bi bi-calendar"></i>
-                                            {{ Carbon\Carbon::parse($row->tgl)->isoFormat('D MMMM Y') }}
+                                            {{ Carbon\Carbon::parse($row->created_at)->isoFormat('D MMMM Y') }}
                                         </li>
                                     </ul>
                                 </div>
@@ -64,7 +64,7 @@
                             <div class="post-title">
                                 <h4 class="" style="text-align: left;"><a href="/read/{{ $row->slug }}" class="font-weight-bold">{{ $row->judul }}</a></h4>
                             </div>
-                            <p style="text-align: left; color: red; font-size: 14px;" class="mb-2"><i class="bi bi-calendar"></i> {{ Carbon\Carbon::parse($row->tgl)->isoFormat('D MMMM Y') }}</p>
+                            <p style="text-align: left; color: red; font-size: 14px;" class="mb-2"><i class="bi bi-calendar"></i> {{ Carbon\Carbon::parse($row->created_at)->isoFormat('D MMMM Y') }}</p>
                             <p class="card-text berita-mini" style="text-align: left;">
                                 <?php
                                     $string = strip_tags($row->isi);

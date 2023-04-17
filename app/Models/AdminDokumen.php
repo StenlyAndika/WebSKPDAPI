@@ -13,11 +13,11 @@ class AdminDokumen extends Model
 
     public function alldokumen() {
         return AdminDokumen::select('*')
-            ->orderBy('tahun', 'DESC')
+            ->orderBy('created_at', 'DESC')
             ->get();
     }
 
     public function dokumenbyid($tahun, $kategori) {
-        return AdminDokumen::select('*')->where(['tahun' => $tahun, 'kategori' => $kategori])->get();
+        return AdminDokumen::select('*')->whereYear('created_at', $tahun)->where('kategori', $kategori)->get();
     }
 }

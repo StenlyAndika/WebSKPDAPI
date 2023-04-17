@@ -7,6 +7,7 @@ use App\Models\AdminFoto;
 use App\Models\AdminSkpd;
 use App\Models\AdminUser;
 use App\Models\AdminBerita;
+use App\Models\AdminKontak;
 use App\Models\AdminDokumen;
 use Illuminate\Http\Request;
 use App\Models\AdminAnggaran;
@@ -15,6 +16,7 @@ use App\Models\AdminPengumuman;
 use App\Models\DashboardProfil;
 use App\Models\AdminPenghargaan;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
 {
@@ -22,6 +24,21 @@ class HomeController extends Controller
         return view('home.index', [
             'title' => 'Website Resmi Pemerintah Kota Sungai Penuh'
         ]);
+    }
+
+    public function kontak(Request $request) {
+        $rules = [
+            'nama' => 'required',
+            'wa' => 'required',
+            'email' => 'required',
+            'pesan' => 'required'
+        ];
+
+        $validatedData = $request->validate($rules);
+        
+        AdminKontak::create($validatedData);
+        
+        return redirect('/')->with('success', 'Pesan anda berhasil disubmit!');
     }
 
     public function berita() {
@@ -124,7 +141,7 @@ class HomeController extends Controller
             'title' => 'Penghargaan Kota Sungai Penuh',
             'kepuasan' => AdminKepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'berita' => AdminBerita::beritalimit(3),
-            'penghargaan' => AdminPenghargaan::orderBy('tahun', 'DESC'->get())
+            'penghargaan' => AdminPenghargaan::all()
         ]);
     }
 

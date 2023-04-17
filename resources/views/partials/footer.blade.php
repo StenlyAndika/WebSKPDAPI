@@ -37,27 +37,27 @@
 
                 <div class="col-lg-4 col-md-6 footer-newsletter" id="kontakkami">
                     <h4>Kontak Kami</h4>
-                    <form action="kontak/kirim" method="post">
+                    <form action="/kontak" method="post">
                         @csrf
-                        <input type="text" class="form-control" name="nama" value="{{ old('nama') }}" placeholder="Nama Anda">
+                        <input type="text" class="form-control mb-1" name="nama" value="{{ old('nama') }}" placeholder="Nama Anda">
                         @error('nama')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
-                        <input type="text" class="form-control" name="wa" value="{{ old('wa') }}" placeholder="Nomor Telp/WA">
+                        <input type="text" class="form-control mb-1" name="wa" value="{{ old('wa') }}" placeholder="Nomor Telp/WA">
                         @error('wa')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
-                        <input type="text" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
+                        <input type="text" class="form-control mb-1" name="email" value="{{ old('email') }}" placeholder="Email">
                         @error('email')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
-                        <textarea name="pesan" class="form-control" rows="4" aria-label="Pesan">
+                        <textarea name="pesan" class="form-control mb-1" rows="4" aria-label="Pesan">
                             {{ old('pesan') }}
                         </textarea>
                         @error('pesan')

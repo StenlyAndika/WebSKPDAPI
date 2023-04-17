@@ -16,9 +16,9 @@
                             $tmptahun = [];
                             $a = 0;
                             foreach ($anggaran as $row) {
-                                if($a!=$row->tahun) {
-                                    array_push($tmptahun,$row->tahun);
-                                    $a=$row->tahun;
+                                if($a!=Carbon\Carbon::parse($row->created_at)->isoFormat('Y')) {
+                                    array_push($tmptahun,Carbon\Carbon::parse($row->created_at)->isoFormat('Y'));
+                                    $a=Carbon\Carbon::parse($row->created_at)->isoFormat('Y');
                                 }
                             }
                         ?>

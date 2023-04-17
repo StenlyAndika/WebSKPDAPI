@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -18,8 +17,8 @@ class AdminBerita extends Model
 
     public function allberita($limit) {
         return AdminBerita::join('admin', 'berita.nama', '=', 'admin.username')
-        ->select('berita.*', 'admin.nama', DB::raw("str_to_date(berita.tgl, '%d-%m-%Y') as tgl"))
-        ->orderBy('tgl', 'DESC')
+        ->select('berita.*', 'admin.nama')
+        ->orderBy('created_at', 'DESC')
         ->limit($limit)
         ->get();
     }
@@ -31,8 +30,8 @@ class AdminBerita extends Model
     }
 
     public function beritalimit($limit) {
-        return AdminBerita::select('*', DB::raw("str_to_date(tgl, '%d-%m-%Y') as tgl"))
-            ->orderBy('tgl', 'DESC')
+        return AdminBerita::select('*')
+            ->orderBy('created_at', 'DESC')
             ->limit($limit)
             ->get();
     }

@@ -10,14 +10,14 @@
     <link rel="icon" href="/img/tablogo.webp">
     <title>{{ $title }}</title>
 
-    <!-- PLUGINS CSS STYLE -->
+    <!-- Vendor CSS STYLE -->
 
-    <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="/plugins/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="/plugins/aos/aos.css">
-    <link rel="stylesheet" href="/plugins/datatables/datatables.css">
-    <link rel="stylesheet" href="/plugins/owl-carousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="/plugins/animated-text/animated-text.css">
+    <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/vendor/aos/aos.css">
+    <link rel="stylesheet" href="/vendor/datatables/datatables.css">
+    <link rel="stylesheet" href="/vendor/owl-carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/vendor/animated-text/animated-text.css">
 
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="/css/style.css">
@@ -40,14 +40,17 @@
     @include('partials.footer')
     
     <!-- Vendor JS Files -->
-    <script src="/plugins/jquery/jquery.min.js"></script>
-    <script src="/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="/plugins/aos/aos.js"></script>
-    <script src="/plugins/datatables/datatables.min.js"></script>
-    <script src="/plugins/owl-carousel/owl.carousel.min.js"></script>
-    <script src="/plugins/marquee/jquery.marquee.min.js" type="text/javascript"></script>
-    <script src="/plugins/animated-text/animated-text.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="/vendor/aos/aos.js"></script>
+    <script src="/vendor/datatables/datatables.min.js"></script>
+    <script src="/vendor/owl-carousel/owl.carousel.min.js"></script>
+    <script src="/vendor/marquee/jquery.marquee.min.js" type="text/javascript"></script>
+    <script src="/vendor/animated-text/animated-text.js"></script>
     <script src="/js/main.js"></script>
+    
+    @include('sweetalert::alert')
+
     <script>
         $(document).ready(function() {
             $('.marquee').marquee({

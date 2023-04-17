@@ -17,7 +17,7 @@
                                 </li>
                                 <li class="list-inline-item">
                                     <i class="bi bi-calendar"></i>
-                                    <a href="#">{{ Carbon\Carbon::parse($singleberita->tgl)->isoFormat('D MMMM Y') }}</a>
+                                    <a href="#">{{ Carbon\Carbon::parse($singleberita->created_at)->isoFormat('D MMMM Y') }}</a>
                                 </li>
                             </ul>
                         </div>

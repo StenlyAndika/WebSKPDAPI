@@ -26,7 +26,7 @@
                             @foreach (App\Models\AdminFoto::fotobyid($rowx) as $rowz)
                                 <div class="col-lg-4 col-md-6 portfolio-item card-animated">
                                     <div class="portfolio-wrap">
-                                        <img src="/upload/foto/{{ $rowz->tgl }}/{{ $rowz->namafile }}" class="img-fluid" alt="">
+                                        <img src="/upload/foto/{{ Carbon\Carbon::parse($rowz->created_at)->isoFormat('DD-MM-Y') }}/{{ $rowz->namafile }}" class="img-fluid" alt="">
                                     </div>
                                 </div>
                             @endforeach

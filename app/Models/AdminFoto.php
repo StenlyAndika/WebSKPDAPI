@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -13,8 +12,8 @@ class AdminFoto extends Model
     protected $guarded = ['id'];
     
     public function allfoto() {
-        return AdminFoto::select('*', DB::raw("str_to_date(tgl, '%d-%m-%Y') as tgl"))
-            ->orderBy('tgl', 'DESC')
+        return AdminFoto::select('*')
+            ->orderBy('created_at', 'DESC')
             ->get();
     }
 

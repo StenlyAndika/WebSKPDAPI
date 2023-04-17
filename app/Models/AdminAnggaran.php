@@ -14,11 +14,11 @@ class AdminAnggaran extends Model
 
     public function allanggaran() {
         return AdminAnggaran::select('*')
-            ->orderBy('tahun', 'DESC')
+            ->orderBy('created_at', 'DESC')
             ->get();
     }
 
     public function anggaranbyid($tahun) {
-        return AdminAnggaran::select('*')->where('tahun', $tahun)->get();
+        return AdminAnggaran::select('*')->whereYear('created_at', $tahun)->get();
     }
 }
