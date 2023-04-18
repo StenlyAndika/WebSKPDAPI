@@ -2,46 +2,46 @@
     <div class="container d-flex justify-content-between">
 
         <div class="navbar-brand">
-            <a aria-label="home" href="/"><img src="/img/logo.webp" alt="" class="img-fluid"></a>
+            <a aria-label="home" href="{{ route('home') }}"><img src="/img/logo.webp" alt="" class="img-fluid"></a>
         </div>
 
         <nav id="navbar" class="navbar">
             <ul>
                 @can('admin')
-                    <li><a class="nav-link" href="/dashboard">Dashboard Admin</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard Admin</a></li>
                 @endcan
-                <li><a class="nav-link" href="/">Beranda</a></li>
-                <li><a class="nav-link" href="/berita">Berita</a></li>
+                <li><a class="nav-link" href="{{ route('home') }}">Beranda</a></li>
+                <li><a class="nav-link" href="{{ route('berita') }}">Berita</a></li>
                 <li class="dropdown"><a href="#">Profil <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="/profil/sejarah">Sejarah Kota Sungai Penuh</a></li>
-                        <li><a href="/profil/pendidikan">Pusat Pendidikan</a></li>
-                        <li><a href="/profil/kesehatan">Layanan Kesehatan</a></li>
-                        <li><a href="/profil/keuangan">Perbankan dan Layanan Keuangan</a></li>
-                        <li><a href="/profil/perbelanjaan">Pusat Perbelanjaan</a></li>
-                        <li><a href="/profil/hotel">Hotel</a></li>
-                        <li><a href="/profil/wisata">Tempat Wisata</a></li>
+                        <li><a href="{{ route('sejarah') }}">Sejarah Kota Sungai Penuh</a></li>
+                        <li><a href="{{ route('pendidikan') }}">Pusat Pendidikan</a></li>
+                        <li><a href="{{ route('kesehatan') }}">Layanan Kesehatan</a></li>
+                        <li><a href="{{ route('keuangan') }}">Perbankan dan Layanan Keuangan</a></li>
+                        <li><a href="{{ route('perbelanjaan') }}">Pusat Perbelanjaan</a></li>
+                        <li><a href="{{ route('hotel') }}">Hotel</a></li>
+                        <li><a href="{{ route('wisata') }}">Tempat Wisata</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a href="#">Galeri <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="/galeri/foto">Foto</a></li>
-                        <li><a href="/galeri/video">Video</a></li>
-                        <li><a href="/galeri/penghargaan">Penghargaan</a></li>
+                        <li><a href="{{ route('foto') }}">Foto</a></li>
+                        <li><a href="{{ route('video') }}">Video</a></li>
+                        <li><a href="{{ route('penghargaan') }}">Penghargaan</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a href="#">Publikasi <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="/publikasi/anggaran">Transparansi Anggaran</a></li>
-                        <li><a href="/publikasi/dokumen">Dokumen Publik</a></li>
+                        <li><a href="{{ route('anggaran') }}">Transparansi Anggaran</a></li>
+                        <li><a href="{{ route('dokumen') }}">Dokumen Publik</a></li>
                         <li><a href="http://jdih.sungaipenuhkota.go.id/" target="_blank">Peraturan</a></li>
-                        <li><a href="/publikasi/pengumuman">Pengumuman</a></li>
+                        <li><a href="{{ route('pengumuman') }}">Pengumuman</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a href="#">Situs <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="/situs/skpd">Web SKPD</a></li>
-                        <li><a href="/situs/desa">Web Desa</a></li>
+                        <li><a href="{{ route('skpd') }}">Web SKPD</a></li>
+                        <li><a href="{{ route('desa') }}">Web Desa</a></li>
                     </ul>
                 </li>
                 <li><a class="nav-link" href="#kontakkami">Kontak Kami</a></li>

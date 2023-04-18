@@ -44,7 +44,11 @@
                                             <?= $row['pesan'] ?>
                                         </p>
                                         </h6>
-                                        <a href="/pesan/hapus/{{ $row->id }}" class="btn btn-danger" onclick="return confirm('Hapus pesan ini?');"><i class="fa-solid fa-trash"></i></a>
+                                        <form action="{{ route('admin.dashboard.destroy', $row->id) }}" method="post" class="d-inline">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Hapus pesan ini?');"><i class="fa-solid fa-trash"></i></button>
+                                        </form>
                                     </div>
                                 </div>
                                 <hr>

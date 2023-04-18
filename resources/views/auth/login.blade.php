@@ -11,7 +11,7 @@
                             {{ session('loginError') }}
                         </div>
                     @endif
-                    <form class="form-signin" action="/login" method="post">
+                    <form class="form-signin" action="{{ route('auth') }}" method="post">
                         @csrf
                         <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" placeholder="Username" value="{{ old('username') }}" autofocus>
                         @error('username')

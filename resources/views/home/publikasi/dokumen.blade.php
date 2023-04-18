@@ -37,10 +37,10 @@
                                 @foreach ($tmpkategori as $rowz)
                                     <tr>
                                     <td colspan="2" class="text-danger text-center font-weight-bold"><?= $rowz; ?></td>
-                                        @foreach (App\Models\AdminDokumen::dokumenbyid($rowx, $rowz) as $row)
+                                        @foreach (App\Models\Dokumen::dokumenbyid($rowx, $rowz) as $row)
                                             <tr>
                                                 <td class="text-center">-</td>
-                                                <td><a class="font-weight-bold" target="_blank" href="/upload/dokumen/{{ $row->namafile }}">{{ $row->keterangan }}</a></td>
+                                                <td><a class="font-weight-bold" target="_blank" href="/storage/upload/dokumen/{{ $row->namafile }}">{{ $row->keterangan }}</a></td>
                                             </tr>
                                         @endforeach
                                     </tr>

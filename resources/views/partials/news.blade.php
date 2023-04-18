@@ -8,7 +8,7 @@
                 <ul style="list-style-type: none;">
                     <li>
                     @foreach ($berita as $row)
-                        <a href="/read/{{ $row->slug }}">{{ $row->judul }}&emsp;&emsp;&emsp;&emsp;</a>
+                        <a href="{{ route('berita.read', $row->slug) }}">{{ $row->judul }}&emsp;&emsp;&emsp;&emsp;</a>
                     @endforeach
                     </li>
                 </ul>

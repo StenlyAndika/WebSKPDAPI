@@ -27,10 +27,10 @@
                             <td colspan="2" style="background-color: #3A5BA0;" class="text-white text-center font-weight-bold">Tahun <?= $rowx; ?></td>
                             <tbody>
                                 <tr>
-                                    @foreach (App\Models\AdminAnggaran::anggaranbyid($rowx) as $row)
+                                    @foreach (App\Models\Anggaran::anggaranbyid($rowx) as $row)
                                         <tr>
                                             <td class="text-center">-</td>
-                                            <td><a class="font-weight-bold" target="_blank" href="/upload/anggaran/{{ $row->namafile }}">{{ $row->keterangan }}</a></td>
+                                            <td><a class="font-weight-bold" target="_blank" href="/storage/upload/anggaran/{{ $row->namafile }}">{{ $row->keterangan }}</a></td>
                                         </tr>
                                 @endforeach
                                 </tr>

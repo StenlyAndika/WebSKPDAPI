@@ -23,10 +23,10 @@
                             <h4 class="font-weight-bold mt-5" style="text-align: left;"><?= $rowx ?></h4>
                         </div>
                         <div class="row" data-aos="fade-up" data-aos-duration="500">
-                            @foreach (App\Models\AdminFoto::fotobyid($rowx) as $rowz)
+                            @foreach (App\Models\Foto::fotobyid($rowx) as $rowz)
                                 <div class="col-lg-4 col-md-6 portfolio-item card-animated">
                                     <div class="portfolio-wrap">
-                                        <img src="/upload/foto/{{ Carbon\Carbon::parse($rowz->created_at)->isoFormat('DD-MM-Y') }}/{{ $rowz->namafile }}" class="img-fluid" alt="">
+                                        <img src="/storage/upload/foto/{{ Carbon\Carbon::parse($rowz->created_at)->isoFormat('DD-MM-Y') }}/{{ $rowz->namafile }}" class="img-fluid" alt="">
                                     </div>
                                 </div>
                             @endforeach

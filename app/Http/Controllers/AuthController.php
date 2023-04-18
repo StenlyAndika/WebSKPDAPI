@@ -21,16 +21,16 @@ class AuthController extends Controller
 
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/dashboard')->with('success', 'Login Berhasil<br>Selamat Datang '.auth()->user()->nama);
         }
 
-        return back()->with('loginError', 'Login Gagal!');
+        return back()->with('loginError', 'Login Gagal, Username atau Password salah!');
     }
 
     public function logout(Request $request) {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect()->route('home');
     }
 }

@@ -28,33 +28,7 @@
 <body>
 
     @include('partials.adminnav')
-    <nav class="menu-bar navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand toggle" href="#">
-            <i class="fa-solid fa-bars"></i>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Beranda Web</a>
-                </li>
-                <li class="nav-item dropdown active">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Welcome back, {{ auth()->user()->nama }}
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <div class="dropdown-divider"></div>
-                        <form action="/logout" method="post">
-                            @csrf
-                            <button type="submit" class="dropdown-item">Logout</button>
-                        </form>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    
     <div class="main-content">
 
         @yield('container')
@@ -68,7 +42,10 @@
     <script src="/vendor/datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
     <script src="https://kit.fontawesome.com/d6482bd15d.js" crossorigin="anonymous"></script>
     <script src="/vendor/ckeditor/ckeditor.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
     <script src="/js/template-script.js"></script>
+
+    @include('sweetalert::alert')
 
     <script>
         $(document).ready(function() {

@@ -5,7 +5,6 @@
         <div class="card shadow">
             <div class="card-body">
                 <div class="container">
-                    <br>
                     <h2 class="font-weight-bold mb-4" style="text-align: center;">Layanan Kesehatan<br>Kota Sungai Penuh</h2>
                     <div class="table-responsive">
                         <table class="table" style="text-align: left;">

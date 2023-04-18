@@ -15,14 +15,14 @@
                         @foreach ($berita as $row)
                             <article class="post-sm">
                                 <div class="post-thumb">
-                                    <a href="/read/{{ $row->slug }}">
+                                    <a href="{{ route('berita.read', $row->slug) }}">
                                         <div class="card-animated">
-                                            <img class="image-responsive w-100" src="/upload/berita/{{ $row->gambar }}" alt="Post-Image">
+                                            <img class="image-responsive w-100" src="{{ asset('storage/'.$row->gambar) }}" alt="Post-Image">
                                         </div>
                                     </a>
                                 </div>
                                 <div class="post-title">
-                                    <h4 class=""><a href="/read/{{ $row->slug }}" class="font-weight-bold">{{ $row->judul }}</a></h4>
+                                    <h4 class=""><a href="{{ route('berita.read', $row->slug) }}" class="font-weight-bold">{{ $row->judul }}</a></h4>
                                 </div>
                                 <div class="post-meta">
                                     <ul class="list-inline post-tag">
@@ -59,10 +59,10 @@
                 <div class="container">
                     @foreach ($berita as $row)
                     <div class="card mb-4 news-card" data-aos="fade-up" data-aos-duration="500">
-                        <img style="border-radius: 5px; padding: 3px;" src="/upload/berita/{{ $row->gambar }}" class="card-img-top" alt="...">
+                        <img style="border-radius: 5px; padding: 3px;" src="{{ asset('storage/'.$row->gambar) }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="post-title">
-                                <h4 class="" style="text-align: left;"><a href="/read/{{ $row->slug }}" class="font-weight-bold">{{ $row->judul }}</a></h4>
+                                <h4 class="" style="text-align: left;"><a href="{{ route('berita.read', $row->slug) }}" class="font-weight-bold">{{ $row->judul }}</a></h4>
                             </div>
                             <p style="text-align: left; color: red; font-size: 14px;" class="mb-2"><i class="bi bi-calendar"></i> {{ Carbon\Carbon::parse($row->created_at)->isoFormat('D MMMM Y') }}</p>
                             <p class="card-text berita-mini" style="text-align: left;">
@@ -77,11 +77,14 @@
                                     echo $string;
                                 ?>
                                 <br>
-                                <a href="/read/{{ $row->slug }}" class="font-weight-bold">Baca selengkapnya...</a>
+                                <a href="{{ route('berita.read', $row->slug) }}" class="font-weight-bold">Baca selengkapnya...</a>
                             </p>
                         </div>
                     </div>
                     <?php endforeach; ?>
+                    <div class="d-flex justify-content-center">
+                        {{ $berita->links() }}
+                    </div>
                 </div>
             </div>
         </div>

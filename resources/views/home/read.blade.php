@@ -23,7 +23,7 @@
                         </div>
                         <div class="post-body">
                             <div class="feature-image">
-                                <img class="img-fluid" src="/upload/berita/{{ $singleberita->gambar }}" alt="feature-image">
+                                <img class="img-fluid" src="{{ asset('storage/'.$singleberita->gambar) }}" alt="feature-image">
                             </div>
                             <p>{!! $singleberita->isi !!}</p>
                         </div>
@@ -41,10 +41,10 @@
                             @foreach ($berita as $row)
                                 <article class="post-sm">
                                     <div class="post-thumb">
-                                        <a href="/read/{{ $row->slug }}"><img class="image-responsive w-100" src="/upload/berita/{{ $row->gambar }}" alt="Post-Image"></a>
+                                        <a href="{{ route('berita.read', $row->slug) }}"><img class="image-responsive w-100" src="{{ asset('/storage/'.$row->gambar) }}" alt="Post-Image"></a>
                                     </div>
                                     <div class="post-title">
-                                        <h4 class=""><a href="/read/{{ $row->slug }}" class="font-weight-bold">{{ $row->judul }}</a></h4>
+                                        <h4 class=""><a href="{{ route('berita.read', $row->slug) }}" class="font-weight-bold">{{ $row->judul }}</a></h4>
                                     </div>
                                     <div class="post-meta">
                                         <ul class="list-inline post-tag">
