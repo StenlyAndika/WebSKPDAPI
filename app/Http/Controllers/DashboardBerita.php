@@ -65,7 +65,7 @@ class DashboardBerita extends Controller
         
         Berita::create($validatedData);
 
-        return redirect()->route('admin.berita.index')->with('success', 'Data berita berhasil ditambah!');
+        return redirect()->route('admin.berita.index')->with('success', 'Data berhasil ditambah!');
     }
 
     /**
@@ -124,7 +124,7 @@ class DashboardBerita extends Controller
         
         Berita::where('id', $berita->id)->update($validatedData);
 
-        return redirect()->route('admin.berita.index')->with('success', 'Data berita berhasil diupdate!');
+        return redirect()->route('admin.berita.index')->with('success', 'Data berhasil diupdate!');
     }
 
     /**
@@ -139,6 +139,6 @@ class DashboardBerita extends Controller
             Storage::delete($berita->gambar);
         }
         Berita::destroy($berita->id);
-        return redirect()->route('admin.berita.index')->with('success','Berita berhasil dihapus!');
+        return redirect()->route('admin.berita.index')->with('success','Data berhasil dihapus!');
     }
 }

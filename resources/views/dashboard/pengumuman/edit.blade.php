@@ -7,23 +7,24 @@
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header">
-						<h1 class="mt-3">Form Berita</h1>
+						<h1 class="mt-3">Form Pengumuman</h1>
 					</div>
 					<div class="card-body card-block">            
-                        <form method="post" action="{{ route('admin.berita.store') }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('admin.pengumuman.update', $pengumuman->slug) }}" enctype="multipart/form-data">
+                            @method('put')
                             @csrf
                             <div class="form-floating mb-1">
-                                <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" placeholder="Judul" name="judul" value="{{ old('judul') }}">
+                                <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" name="judul" placeholder="Judul" value="{{ $pengumuman->judul }}">
                                 <label for="judul">Judul</label>
                                 @error('judul')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>                              
+                            </div>
                             <div class="form-floating mb-1">
-                                <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" placeholder="slug" name="slug" value="{{ old('slug') }}" readonly>
-                                <label for="slug">Judul</label>
+                                <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" placeholder="Slug" value="{{ $pengumuman->slug }}" readonly>
+                                <label for="judul">Slug</label>
                                 @error('slug')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -31,21 +32,17 @@
                                 @enderror
                             </div>
                             <div class="form-group mb-1">
-                                <input type="hidden" id="isi" name="isi" value="{{ old('isi') }}">
-                                <trix-editor input="isi"></trix-editor>
-                            </div>
-                            <div class="form-group mb-1">
-                                <input type="file" id="gambar" class="form-control @error('gambar') is-invalid @enderror" name="gambar" onchange="previewImage()">
-                                @error('gambar')
+                                <input type="file" id="namafile" class="form-control @error('namafile') is-invalid @enderror" name="namafile">
+                                @error('namafile')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
-                                <img class="img-preview img-fluid col-lg-8 mt-2">
+                                <input type="hidden" name="oldFile" value="{{ $pengumuman->namafile }}">
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a class="btn btn-sm btn-success" href="{{ route('admin.berita.index') }}">Kembali</a>
+                                <a class="btn btn-sm btn-success" href="{{ route('admin.pengumuman.index') }}">Kembali</a>
                             </div>
                         </form>
                     </div>
@@ -63,24 +60,11 @@
         judul.addEventListener('keyup', function(e) {
             window.clearTimeout(timer);
             timer = window.setTimeout(() => {
-                fetch('/admin/berita/checkSlug/' + judul.value)
+                fetch('/admin/pengumuman/checkSlug/' + judul.value)
                 .then(response => response.json())
                 .then(data => slugs.value = data.slug)
             }, timeoutVal);
         })
 
-        function previewImage() {
-            const image = document.querySelector('#gambar');
-            const imagePreview = document.querySelector('.img-preview');
-
-            imagePreview.style.display = 'block';
-
-            const oFReader = new FileReader();
-            oFReader.readAsDataURL(image.files[0]);
-
-            oFReader.onload = function (oFREvent) {
-                imagePreview.src = oFREvent.target.result;
-            }
-        }
     </script>
 @endsection

@@ -8,7 +8,7 @@
                 <div class="table-responsive">
                     @foreach ($pengumuman as $row)
                         <p class="font-weight-bold mb-2" style="text-align: left; color: black;">{{ $row->judul }}</p>
-                        <embed type="application/pdf" src="/storage/upload/pengumuman/{{ $row->namafile }}" width="940" height="780"></embed>
+                        <embed type="application/pdf" src="/storage/{{ $row->namafile }}" width="940" height="780"></embed>
                     @endforeach
                 </div>
             </div>

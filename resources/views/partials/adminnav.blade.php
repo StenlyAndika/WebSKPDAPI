@@ -21,7 +21,7 @@
                 <span class="title">Pengumuman</span>
             </a>
         </li>
-        <li class="list {{ Request::is('admin//anggaran*') ? 'active' : '' }}">
+        <li class="list {{ Request::is('admin/anggaran*') ? 'active' : '' }}">
             <a href="/admin/anggaran">
                 <span class="icon"><i class="fa-solid fa-folder-open"></i></span>
                 <span class="title">Transparansi</span>

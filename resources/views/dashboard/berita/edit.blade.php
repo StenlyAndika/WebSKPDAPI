@@ -13,27 +13,29 @@
                         <form method="post" action="{{ route('admin.berita.update', $berita->slug) }}" enctype="multipart/form-data">
                             @method('put')
                             @csrf
-                            <div class="form-group">
+                            <div class="form-floating mb-1">
                                 <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" name="judul" placeholder="Judul" value="{{ $berita->judul }}">
+                                <label for="judul">Judul</label>
                                 @error('judul')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
-                            <div class="form-group">
+                            <div class="form-floating mb-1">
                                 <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" placeholder="Slug" value="{{ $berita->slug }}" readonly>
+                                <label for="slug">Slug</label>
                                 @error('slug')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-1">
                                 <input type="hidden" id="isi" name="isi" value="{{ $berita->isi }}">
                                 <trix-editor input="isi"></trix-editor>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-1">
                                 <input type="file" id="gambar" class="form-control @error('gambar') is-invalid @enderror" name="gambar" onchange="previewImage()">
                                 @error('gambar')
                                     <div class="invalid-feedback">
@@ -62,11 +64,15 @@
     <script>
         const judul = document.querySelector('#judul');
         const slugs = document.querySelector('#slug');
-
+        
+        let timer, timeoutVal = 500;
         judul.addEventListener('keyup', function(e) {
-            fetch('/admin/berita/checkSlug/' + judul.value)
-            .then(response => response.json())
-            .then(data => slugs.value = data.slug)
+            window.clearTimeout(timer);
+            timer = window.setTimeout(() => {
+                fetch('/admin/berita/checkSlug/' + judul.value)
+                .then(response => response.json())
+                .then(data => slugs.value = data.slug)
+            }, timeoutVal);
         })
 
         function previewImage() {
