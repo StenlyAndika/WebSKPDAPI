@@ -43,7 +43,7 @@ class DashboardPengumuman extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -68,7 +68,7 @@ class DashboardPengumuman extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pengumuman  $pengumuman
+     * @param  \App\Models\Pengumuman $pengumuman
      * @return \Illuminate\Http\Response
      */
     public function show(Pengumuman $pengumuman)
@@ -79,7 +79,7 @@ class DashboardPengumuman extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pengumuman  $pengumuman
+     * @param  \App\Models\Pengumuman $pengumuman
      * @return \Illuminate\Http\Response
      */
     public function edit(Pengumuman $pengumuman)
@@ -92,15 +92,15 @@ class DashboardPengumuman extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pengumuman  $pengumuman
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Models\Pengumuman $pengumuman
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Pengumuman $pengumuman)
     {
         $rules = [
             'judul' => 'required',
-            'namafile' => 'mimes:pdf'
+            'namafile' => 'file|mimes:pdf'
         ];
 
         if ($request->slug != $pengumuman->slug) {
@@ -124,7 +124,7 @@ class DashboardPengumuman extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pengumuman  $pengumuman
+     * @param  \App\Models\Pengumuman $pengumuman
      * @return \Illuminate\Http\Response
      */
     public function destroy(Pengumuman $pengumuman)

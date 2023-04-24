@@ -41,7 +41,6 @@
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="/vendor/datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
     <script src="https://kit.fontawesome.com/d6482bd15d.js" crossorigin="anonymous"></script>
-    {{-- <script src="/vendor/ckeditor/ckeditor.js" type="text/javascript"></script> --}}
     <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
     <script src="/js/template-script.js"></script>
 

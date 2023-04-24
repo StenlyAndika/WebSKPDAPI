@@ -40,7 +40,7 @@
                                         @foreach (App\Models\Dokumen::dokumenbyid($rowx, $rowz) as $row)
                                             <tr>
                                                 <td class="text-center">-</td>
-                                                <td><a class="font-weight-bold" target="_blank" href="/storage/upload/dokumen/{{ $row->namafile }}">{{ $row->keterangan }}</a></td>
+                                                <td><a class="font-weight-bold" target="_blank" href="/storage/{{ $row->namafile }}">{{ $row->keterangan }}</a></td>
                                             </tr>
                                         @endforeach
                                     </tr>

@@ -45,14 +45,14 @@
                 <span class="title">Penghargaan</span>
             </a>
         </li>
-        <li class="list {{ Request::is('admin/domain*') ? 'active' : '' }}">
-            <a href="/admin/domain">
+        <li class="list {{ Request::is('admin/domainskpd*') ? 'active' : '' }}">
+            <a href="/admin/domainskpd">
                 <span class="icon"><i class="fa-solid fa-link"></i></span>
                 <span class="title">Domain SKPD</span>
             </a>
         </li>
-        <li class="list {{ Request::is('admin/webdesa*') ? 'active' : '' }}">
-            <a href="/admin/webdesa">
+        <li class="list {{ Request::is('admin/domaindesa*') ? 'active' : '' }}">
+            <a href="/admin/domaindesa">
                 <span class="icon"><i class="fa-solid fa-home"></i></span>
                 <span class="title">Domain Desa</span>
             </a>
@@ -63,8 +63,8 @@
                 <span class="title">Agenda Kota</span>
             </a>
         </li>
-        <li class="list {{ Request::is('admin/services*') ? 'active' : '' }}">
-            <a href="/admin/services">
+        <li class="list {{ Request::is('admin/service*') ? 'active' : '' }}">
+            <a href="/admin/service">
                 <span class="icon"><i class="fa-solid fa-hands-asl-interpreting"></i></span>
                 <span class="title">Smart Services</span>
             </a>
@@ -98,17 +98,17 @@
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('home') }}" target="_blank">Preview Web</a>
             </li>
-            <li class="nav-item dropdown active">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Welcome back, {{ auth()->user()->nama }}
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <ul class="dropdown-menu">
                     <div class="dropdown-divider"></div>
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
                         <button type="submit" class="dropdown-item">Logout</button>
                     </form>
-                </div>
+                </ul>
             </li>
         </ul>
     </div>

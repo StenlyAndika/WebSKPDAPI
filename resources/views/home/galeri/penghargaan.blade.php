@@ -8,7 +8,7 @@
                     <h2 class="font-weight-bold mb-4" style="text-align: center;">Penghargaan</h2>
                     <div class="table-responsive">
                         @foreach ($penghargaan as $row)
-                            <embed type="application/pdf" src="/storage/upload/penghargaan/{{ $row->namafile }}" width="940" height="780"></embed>
+                            <embed type="application/pdf" src="/storage/{{ $row->namafile }}" width="940" height="780"></embed>
                         @endforeach
                     </div>
                 </div>

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Desa;
+use App\Models\DomainDesa;
 use App\Models\Foto;
-use App\Models\Skpd;
+use App\Models\DomainSKPD;
 use App\Models\User;
 use App\Models\Berita;
 use App\Models\Kontak;
@@ -193,7 +193,7 @@ class HomeController extends Controller
             'title' => 'Website SKPD Kota Sungai Penuh',
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'berita' => Berita::beritalimit(3),
-            'skpd' => Skpd::orderBy('nama', 'ASC')->get()
+            'skpd' => DomainSKPD::allHome()
         ]);
     }
 
@@ -203,7 +203,7 @@ class HomeController extends Controller
             'title' => 'Website Desa Kota Sungai Penuh',
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'berita' => Berita::beritalimit(3),
-            'desa' => Desa::orderBy('nama', 'ASC')->get()
+            'desa' => DomainDesa::allHome()
         ]);
     }
 }

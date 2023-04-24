@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Anggaran;
+use App\Models\Dokumen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
-class DashboardAnggaran extends Controller
+class DashboardDokumen extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,15 +16,15 @@ class DashboardAnggaran extends Controller
      */
     public function index()
     {
-        return view('dashboard.anggaran.index', [
-            'title' => 'Data Anggaran',
-            'anggaran' => Anggaran::all()
+        return view('dashboard.dokumen.index', [
+            'title' => 'Data Dokumen',
+            'dokumen' => Dokumen::all()
         ]);
     }
 
     public function checkSlug(Request $request)
     {
-        $slug = SlugService::createSlug(Anggaran::class, 'slug', $request->keterangan);
+        $slug = SlugService::createSlug(Dokumen::class, 'slug', $request->keterangan);
         return response()->json(['slug' => $slug]);
     }
 
@@ -35,8 +35,8 @@ class DashboardAnggaran extends Controller
      */
     public function create()
     {
-        return view('dashboard.anggaran.create', [
-            'title' => 'Tambah Anggaran'
+        return view('dashboard.dokumen.create', [
+            'title' => 'Tambah Dokumen'
         ]);
     }
 
@@ -49,29 +49,30 @@ class DashboardAnggaran extends Controller
     public function store(Request $request)
     {
         $rules = [
+            'kategori' => 'required',
             'keterangan' => 'required',
-            'slug' => 'required|unique:anggaran',
+            'slug' => 'required|unique:dokumen',
             'namafile' => 'file|mimes:pdf'
         ];
 
         $validatedData = $request->validate($rules);
 
         if ($request->file('namafile')) {
-            $validatedData['namafile'] = $request->file('namafile')->store('upload/anggaran');
+            $validatedData['namafile'] = $request->file('namafile')->store('upload/dokumen');
         }
         
-        Anggaran::create($validatedData);
+        Dokumen::create($validatedData);
 
-        return redirect()->route('admin.anggaran.index')->with('success', 'Data berhasil ditambah!');
+        return redirect()->route('admin.dokumen.index')->with('success', 'Data berhasil ditambah!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Anggaran $anggaran
+     * @param  \App\Models\Dokumen $dokumen
      * @return \Illuminate\Http\Response
      */
-    public function show(Anggaran $anggaran)
+    public function show(Dokumen $dokumen)
     {
         
     }
@@ -79,32 +80,33 @@ class DashboardAnggaran extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Anggaran $anggaran
+     * @param  \App\Models\Dokumen $dokumen
      * @return \Illuminate\Http\Response
      */
-    public function edit(Anggaran $anggaran)
+    public function edit(Dokumen $dokumen)
     {
-        return view('dashboard.anggaran.edit', [
-            'title' => 'Edit Anggaran'
-        ], compact('anggaran'));
+        return view('dashboard.dokumen.edit', [
+            'title' => 'Edit Dokumen'
+        ], compact('dokumen'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \App\Models\Anggaran $anggaran
+     * @param  \App\Models\Dokumen $dokumen
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Anggaran $anggaran)
+    public function update(Request $request, Dokumen $dokumen)
     {
         $rules = [
+            'kategori' => 'required',
             'keterangan' => 'required',
             'namafile' => 'file|mimes:pdf'
         ];
 
-        if ($request->slug != $anggaran->slug) {
-            $rules['slug'] = 'required|unique:anggaran';
+        if ($request->slug != $dokumen->slug) {
+            $rules['slug'] = 'required|unique:Dokumen';
         }
 
         $validatedData = $request->validate($rules);
@@ -113,26 +115,26 @@ class DashboardAnggaran extends Controller
             if($request->oldFile) {
                 Storage::delete($request->oldFile);
             }
-            $validatedData['namafile'] = $request->file('namafile')->store('upload/anggaran');
+            $validatedData['namafile'] = $request->file('namafile')->store('upload/Dokumen');
         }
         
-        Anggaran::where('id', $anggaran->id)->update($validatedData);
+        Dokumen::where('id', $dokumen->id)->update($validatedData);
 
-        return redirect()->route('admin.anggaran.index')->with('success', 'Data berhasil diupdate!');
+        return redirect()->route('admin.dokumen.index')->with('success', 'Data berhasil diupdate!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Anggaran $anggaran
+     * @param  \App\Models\Dokumen $dokumen
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Anggaran $anggaran)
+    public function destroy(Dokumen $dokumen)
     {
-        if($anggaran->namafile) {
-            Storage::delete($anggaran->namafile);
+        if($dokumen->namafile) {
+            Storage::delete($dokumen->namafile);
         }
-        Anggaran::destroy($anggaran->id);
-        return redirect()->route('admin.anggaran.index')->with('success','Data berhasil dihapus!');
+        Dokumen::destroy($dokumen->id);
+        return redirect()->route('admin.dokumen.index')->with('success','Data berhasil dihapus!');
     }
 }

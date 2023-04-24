@@ -9,5 +9,11 @@ class Kepuasan extends Model
 {
     use HasFactory;
     protected $table = 'kepuasan';
-    protected $guarded = ['id'];
+    protected $primaryKey = 'tahun';
+    protected $fillable = ['tahun', 'nilai', 'predikat'];
+    public $timestamps = false;
+
+    public function getRouteKeyName() {
+        return 'tahun';
+    }
 }
