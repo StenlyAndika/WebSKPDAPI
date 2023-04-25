@@ -17,7 +17,7 @@
                                             <tr>
                                                 <td><h6>Tanggal</h6></td>
                                                 <td><h6>&nbsp;:&nbsp;</h6></td>
-                                                <td><h6>{{ $row->created_at }}</h6></td>
+                                                <td><h6>{{ Carbon\Carbon::parse($row->created_at)->isoFormat('D MMMM Y') }}</h6></td>
                                             </tr>
                                             <tr>
                                                 <td><h6>Email</h6></td>

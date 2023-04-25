@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardFoto;
 use App\Http\Controllers\DashboardUser;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardAgenda;
 use App\Http\Controllers\DashboardBerita;
 use App\Http\Controllers\DashboardDokumen;
 use App\Http\Controllers\DashboardService;
@@ -138,6 +139,13 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/service/{service}/edit', [DashboardService::class, 'edit'])->name('admin.service.edit');
     Route::put('/admin/service/{service}', [DashboardService::class, 'update'])->name('admin.service.update');
     Route::delete('/admin/service/{service}', [DashboardService::class, 'destroy'])->name('admin.service.destroy');
+
+    Route::get('/admin/agenda', [DashboardAgenda::class, 'index'])->name('admin.agenda.index');
+    Route::get('/admin/agenda/create', [DashboardAgenda::class, 'create'])->name('admin.agenda.create');
+    Route::post('/admin/agenda', [DashboardAgenda::class, 'store'])->name('admin.agenda.store');
+    Route::get('/admin/agenda/{agenda}/edit', [DashboardAgenda::class, 'edit'])->name('admin.agenda.edit');
+    Route::put('/admin/agenda/{agenda}', [DashboardAgenda::class, 'update'])->name('admin.agenda.update');
+    Route::delete('/admin/agenda/{agenda}', [DashboardAgenda::class, 'destroy'])->name('admin.agenda.destroy');
 
     Route::middleware(['root'])->group(function () {
         Route::get('/admin/user', [DashboardUser::class, 'index'])->name('admin.user.index');

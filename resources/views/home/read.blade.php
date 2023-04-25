@@ -31,12 +31,11 @@
                 </div>
                 <div class="container mt-4">
                     <div class="row">
-                        <div class="col-12 title">
-                            <h4 class="text-white">Baca Juga</h4>
+                        <div class="container col-lg-12 rounded text-center bg-primary">
+                            <h4 class="text-white mt-1">Baca Juga</h4>
                         </div>
                     </div>
-                    <br>
-                    <div class="row">
+                    <div class="row mt-2">
                         <div class="news-carousel owl-carousel owl-theme">
                             @foreach ($berita as $row)
                                 <article class="post-sm">
@@ -53,7 +52,7 @@
                                             </li>
                                             <li class="list-inline-item" style="color: red; font-size: 14px;">
                                                 <i class="bi bi-calendar"></i>
-                                                {{ Carbon\Carbon::parse($row->tgl)->isoFormat('D MMMM Y') }}
+                                                {{ Carbon\Carbon::parse($row->created_at)->isoFormat('D MMMM Y') }}
                                             </li>
                                         </ul>
                                     </div>
@@ -61,9 +60,9 @@
                                         <p style="font-size: 14px">
                                             <?php
                                                 $string = strip_tags($row->isi);
-                                                if (strlen($string) > 150) {
+                                                if (strlen($string) > 200) {
                                                     // truncate string
-                                                    $stringCut = substr($string, 0, 150);
+                                                    $stringCut = substr($string, 0, 200);
                                                     $endPoint = strrpos($stringCut, ' ');
                                                     //if the string doesn't contain any space then it will cut without word basis.
                                                     $string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);

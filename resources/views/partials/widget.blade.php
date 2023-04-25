@@ -23,9 +23,43 @@
     </div>
     <div class="card shadow mb-4">
         <div class="card-header">
-            <h6 class="m-0 font-weight-bold">Agenda</h6>
+            <h6 class="m-0 font-weight-bold">Agenda Kegiatan</h6>
         </div>
         <div class="card-body">
+            <div class="row">
+                @foreach ($agenda as $row)
+                    <div class="col py-2">
+                        @if ($row->tgl == Carbon\Carbon::tomorrow()->toDateString())
+                            <div class="card border-primary shadow">
+                                <div class="card-body">
+                                    <h5 class="card-title text-primary">{{ $row->kegiatan }}</h5>
+                                    <div class="text-left text-primary"><i class="bi bi-calendar"></i> {{ Carbon\Carbon::parse($row->tgl)->isoFormat('D-MM-Y') }} (Akan Datang)</div>
+                                    <div class="text-left text-primary"><i class="bi bi-clock"></i> {{ $row->jam }} </div>
+                                    <div class="text-left"><i class="bi bi-geo-alt-fill"></i> {{ $row->lokasi }} </div>
+                                </div>
+                            </div>
+                        @elseif ($row->tgl == Carbon\Carbon::today()->toDateString())
+                            <div class="card border-success shadow">
+                                <div class="card-body">
+                                    <h5 class="card-title text-success">{{ $row->kegiatan }}</h5>
+                                    <div class="text-left text-success"><i class="bi bi-calendar-check-fill"></i> {{ Carbon\Carbon::parse($row->tgl)->isoFormat('D-MM-Y') }} (Hari ini)</div>
+                                    <div class="text-left text-success"><i class="bi bi-clock-fill"></i> {{ $row->jam }} </div>
+                                    <div class="text-left"><i class="bi bi-geo-alt-fill"></i> {{ $row->lokasi }} </div>
+                                </div>
+                            </div>
+                        @else
+                            <div class="card border-danger shadow">
+                                <div class="card-body">
+                                    <h5 class="card-title text-danger">{{ $row->kegiatan }}</h5>
+                                    <div class="text-left text-danger"><i class="bi bi-calendar-check"></i> {{ Carbon\Carbon::parse($row->tgl)->isoFormat('D-MM-Y') }} (Selesai)</div>
+                                    <div class="text-left text-danger"><i class="bi bi-clock-history"></i> {{ $row->jam }} </div>
+                                    <div class="text-left"><i class="bi bi-geo-alt-fill"></i> {{ $row->lokasi }} </div>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                @endforeach
+            </div>
             {{-- <?php
                 $timelinetgl = [];
                 $timelinejam = [];

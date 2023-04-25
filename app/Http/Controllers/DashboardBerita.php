@@ -18,7 +18,7 @@ class DashboardBerita extends Controller
     {
         return view('dashboard.berita.index', [
             'title' => 'Data Berita',
-            'berita' => Berita::all()
+            'berita' => Berita::allberitadashboard(auth()->user()->username)
         ]);
     }
 

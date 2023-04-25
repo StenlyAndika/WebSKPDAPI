@@ -30,6 +30,10 @@ class Berita extends Model
         ];
     }
 
+    public function allberitadashboard($user) {
+        return Berita::select('*')->where('nama', $user)->get();
+    }
+
     public function allberita() {
         return Berita::join('user', 'berita.nama', '=', 'user.username')
         ->select('berita.*', 'user.nama')
@@ -44,8 +48,9 @@ class Berita extends Model
     }
 
     public function beritalimit($limit) {
-        return Berita::select('*')
-            ->orderBy('created_at', 'DESC')
+        return Berita::join('user', 'berita.nama', '=', 'user.username')
+            ->select('berita.*', 'user.nama')
+            ->inRandomOrder()
             ->limit($limit)
             ->get();
     }
