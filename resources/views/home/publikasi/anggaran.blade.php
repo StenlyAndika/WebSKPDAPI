@@ -5,11 +5,11 @@
         <div class="card shadow">
             <div class="card-body">
                 <div class="container" style="text-align: left;">
-                    <h2 class="font-weight-bold mb-4" style="text-align: center;">Transparansi Anggaran</h2>
+                    <h2 class="fw-bold mb-4" style="text-align: center;">Transparansi Anggaran</h2>
                     <div class="table-responsive">
                         <div class="row">
                             <div class="col-lg-8">
-                                <h4 class="font-weight-bold mb-4 mt-2 aaz">Klik untuk mengunduh dokumen</h4>
+                                <h4 class="fw-bold mb-4 mt-2 aaz">Klik untuk mengunduh dokumen</h4>
                             </div>
                         </div>
                         <?php
@@ -24,15 +24,17 @@
                         ?>
                         <table id="datatable" class="table-bordered" width="100%">
                         @foreach ($tmptahun as $rowx)
-                            <td colspan="2" style="background-color: #3A5BA0;" class="text-white text-center font-weight-bold">Tahun <?= $rowx; ?></td>
+                            <td colspan="2" style="background-color: #3A5BA0;" class="text-white text-center fw-bold">Tahun <?= $rowx; ?></td>
                             <tbody>
                                 <tr>
                                     @foreach (App\Models\Anggaran::anggaranbyid($rowx) as $row)
                                         <tr>
                                             <td class="text-center">-</td>
-                                            <td><a class="font-weight-bold" target="_blank" href="/storage/{{ $row->namafile }}">{{ $row->keterangan }}</a></td>
+                                            <td>
+                                                <a class="fw-bold" target="_blank" href="/storage/{{ $row->namafile }}">{{ $row->keterangan }}</a>
+                                            </td>
                                         </tr>
-                                @endforeach
+                                    @endforeach
                                 </tr>
                             </tbody>
                         @endforeach

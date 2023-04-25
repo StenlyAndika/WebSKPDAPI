@@ -65,7 +65,7 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                        <button class="btn btn-md btn-light text-danger font-weight-bold" data-action='submit'>Kirim Pesan</button>
+                        <button class="btn btn-md btn-light text-danger fw-bold" data-action='submit'>Kirim Pesan</button>
                     </form>
                 </div>
 

@@ -5,7 +5,7 @@
         <div class="card shadow">
             <div class="card-body">
                 <div class="container">
-                    <h2 class="font-weight-bold mb-4" style="text-align: center;">Domain dan Sub Domain SKPD<br>Kota Sungai Penuh</h2>
+                    <h2 class="fw-bold mb-4" style="text-align: center;">Domain dan Sub Domain SKPD<br>Kota Sungai Penuh</h2>
                     <div class="table-responsive">
                         <table id="datatable" class="table" style="text-align: left;">
                             <thead>

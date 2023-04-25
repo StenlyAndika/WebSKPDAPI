@@ -20,7 +20,7 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>                              
+                            </div>
                             <div class="form-floating mb-1">
                                 <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" placeholder="slug" name="slug" value="{{ old('slug') }}" readonly>
                                 <label for="slug">Judul</label>

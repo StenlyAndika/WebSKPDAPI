@@ -1,13 +1,13 @@
 @extends('layout.main')
 
 @section('container')
-    <section class="col-md-9 section page-title mb-2">
+    <section class="col-md-9 section mb-2">
         <div class="card shadow">
             <div class="container">
                 <div class="card-body row align-items-center">
-                    <div class="col-md-10 order-1 order-md-1 text-center text-md-left" data-aos="fade-left" data-aos-duration="500">
-                        <h1 class="font-weight-bold" style="color: #000;">Website Resmi</h1>
-                        <h1 class="font-weight-bold" style="color: #2e7eed;">Pemerintah Kota Sungai Penuh</h1>
+                    <div class="col-md-10 order-1 order-md-1 text-md-left" data-aos="fade-left" data-aos-duration="500">
+                        <h1 class="fw-bold" style="color: #000;">Website Resmi</h1>
+                        <h1 class="fw-bold" style="color: #2e7eed;">Pemerintah Kota Sungai Penuh</h1>
                     </div>
                 </div>
                 <div class="container">
@@ -22,7 +22,7 @@
                                     </a>
                                 </div>
                                 <div class="post-title">
-                                    <h4 class=""><a href="{{ route('berita.read', $row->slug) }}" class="font-weight-bold">{{ $row->judul }}</a></h4>
+                                    <h4 class=""><a href="{{ route('berita.read', $row->slug) }}" class="fw-bold">{{ $row->judul }}</a></h4>
                                 </div>
                                 <div class="post-meta">
                                     <ul class="list-inline post-tag">
@@ -62,7 +62,7 @@
                         <img style="border-radius: 5px; padding: 3px;" src="{{ asset('storage/'.$row->gambar) }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="post-title">
-                                <h4 class="" style="text-align: left;"><a href="{{ route('berita.read', $row->slug) }}" class="font-weight-bold">{{ $row->judul }}</a></h4>
+                                <h4 class="" style="text-align: left;"><a href="{{ route('berita.read', $row->slug) }}" class="fw-bold">{{ $row->judul }}</a></h4>
                             </div>
                             <p style="text-align: left; color: red; font-size: 14px;" class="mb-2"><i class="bi bi-calendar"></i> {{ Carbon\Carbon::parse($row->created_at)->isoFormat('D MMMM Y') }}</p>
                             <p class="card-text berita-mini" style="text-align: left;">
@@ -77,7 +77,7 @@
                                     echo $string;
                                 ?>
                                 <br>
-                                <a href="{{ route('berita.read', $row->slug) }}" class="font-weight-bold">Baca selengkapnya...</a>
+                                <a href="{{ route('berita.read', $row->slug) }}" class="fw-bold">Baca selengkapnya...</a>
                             </p>
                         </div>
                     </div>

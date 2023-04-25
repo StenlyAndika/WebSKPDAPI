@@ -11,6 +11,10 @@
     -webkit-font-smoothing: antialiased;
 }
 
+h2 {
+  font-family: 'Signika Negative', sans-serif;
+}
+
 html, body {
   overflow: auto;
   scroll-behavior: smooth;
@@ -30,48 +34,9 @@ a:focus {
   text-decoration: none;
 }
 
-/* h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Signika Negative", sans-serif;
-} */
-
 /*--------------------------------------------------------------
 # Animated Headline
 --------------------------------------------------------------*/
-/* 
-.stroke-single,
-.stroke-double {
-    position: relative;
-    background: transparent;
-    z-index: 0;
-    font-family: "Signika Negative", sans-serif;
-    font-weight: 500;
-    color: #ff0000;
-    font-size: 32px;
-    position: relative;
-}
-/* add a single stroke */
-/* .stroke-single:before,
-.stroke-double:before {
-    content: attr(title);
-    position: absolute;
-    -webkit-text-stroke: 0.11em #fff;
-    left: 0;
-    z-index: -1;
-}
-/* add a double stroke */
-/* .stroke-double:after {
-    content: attr(title);
-    position: absolute;
-    -webkit-text-stroke: 0.25em #1a0155;
-    left: 0;
-    z-index: -2;
-} */
-
 .cd-headline.clip span {
   padding: 0px;
 }

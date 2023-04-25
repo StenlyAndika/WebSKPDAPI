@@ -32,6 +32,8 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::post('/kontak', [HomeController::class, 'kontak'])->name('kontak');
 
+Route::get('/menu-pemerintahan/pemerintahan', [HomeController::class, 'pemerintahan'])->name('pemerintahan');
+
 Route::get('/berita', [HomeController::class, 'berita'])->name('berita');
 Route::get('/berita/read/{slug}', [HomeController::class, 'read'])->name('berita.read');
 

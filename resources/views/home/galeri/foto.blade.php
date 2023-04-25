@@ -5,7 +5,7 @@
         <div class="card shadow">
             <div class="card-body">
                 <div class="container">
-                    <h2 class="font-weight-bold mb-4" style="text-align: center;">Galeri Foto<br>Kota Sungai Penuh</h2>
+                    <h2 class="fw-bold mb-4" style="text-align: center;">Galeri Foto<br>Kota Sungai Penuh</h2>
                     <?php
                         $tmpkegiatan = [];
                         $a = "";
@@ -18,7 +18,7 @@
                     ?>
                     @foreach ($tmpkegiatan as $rowx)
                         <div class="col-lg-12">
-                            <h4 class="font-weight-bold mt-5" style="text-align: left;"><?= $rowx ?></h4>
+                            <h4 class="fw-bold mt-5" style="text-align: left;"><?= $rowx ?></h4>
                         </div>
                         <div class="row" data-aos="fade-up" data-aos-delay="500">
                             @foreach (App\Models\Foto::fotobyid($rowx) as $rowz)

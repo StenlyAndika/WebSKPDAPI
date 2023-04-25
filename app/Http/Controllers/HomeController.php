@@ -224,4 +224,11 @@ class HomeController extends Controller
             'desa' => DomainDesa::allHome()
         ]);
     }
+
+    public function pemerintahan()
+    {
+        return view('home.menu-pemerintahan.pemerintahan', [
+            'title' => 'Pemerintahan'
+        ]);
+    }
 }

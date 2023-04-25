@@ -1,9 +1,9 @@
 <div class="section col-lg-12">
     <div class="ticker d-flex flex-wrap">
-        <div class="title rounded-left">
+        <div class="title rounded-start">
             <h5>Berita Terkini</h5>
         </div>
-        <div class="news rounded-right">
+        <div class="news rounded-end">
             <ul class="marquee" style="list-style-type: none;">
                 <li>
                 @foreach ($berita as $row)

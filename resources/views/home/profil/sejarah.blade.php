@@ -5,10 +5,10 @@
         <div class="card">
             <div class="card-body">
                 <div class="container" style="text-align: left;">
-                    <h2 class="font-weight-bold mb-4" style="text-align: center;">Sejarah<br>Kota Sungai Penuh
+                    <h2 class="fw-bold mb-4" style="text-align: center;">Sejarah<br>Kota Sungai Penuh
                     </h2>
                     <div class="table-responsive">
-                        <h3 class="font-weight-bold">Kronologis Pembentukan Kota Sungai Penuh</h3>
+                        <h3 class="fw-bold">Kronologis Pembentukan Kota Sungai Penuh</h3>
                         <p class="xzx">1. Keputusan Pemerintah Kerajaan Belanda (Government Besluit) Nomor 13 tanggal 3 Nopember 1909, Sungai Penuh ditunjuk sebagai Ibukota</p>
                         <p class="xzx">2. Aspirasi masyarakat membentuk Kota Sungai Penuh sejak tahun 1970-an</p>
                         <p class="xzx">3. Perkembangan Kota Sungai Penuh tidak efektif dikelola hanya oleh Pemerintah Kecamatan</p>
@@ -17,7 +17,7 @@
                         <p class="xzx">6. Untuk peningkatan pelayanan publik dan percepatan pembangunan</p>
                         <p class="xzx">7. Hasil penelitian oleh Prof. Dr. Sadu Wasistiono,MS (Pasca Sarjana IPDN) tahun 2005 yang menyatakan bahwa Kabupaten Kerinci layak untuk dimekarkan</p>
                         <br class="mb-2">
-                        <h3 class="font-weight-bold mb-2" style="text-align: left;">Dasar Hukum</h2>
+                        <h3 class="fw-bold mb-2" style="text-align: left;">Dasar Hukum</h2>
                         <p class="xzx">1. UU No. 25 Tahun 2004 tentang Sistem Perencanaan Pembangunan Nasional</p>
                         <p class="xzx">2. UU No. 32 Tahun 2004 tentang Pemerintah Daerah</p>
                         <p class="xzx">3. UU No. 25 Tahun 2008 tentang Pembentukan Kota Sungai Penuh</p>

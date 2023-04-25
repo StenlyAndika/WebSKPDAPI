@@ -43,7 +43,7 @@
                                         <a href="{{ route('berita.read', $row->slug) }}"><img class="image-responsive w-100" src="{{ asset('/storage/'.$row->gambar) }}" alt="Post-Image"></a>
                                     </div>
                                     <div class="post-title">
-                                        <h4 class=""><a href="{{ route('berita.read', $row->slug) }}" class="font-weight-bold">{{ $row->judul }}</a></h4>
+                                        <h4 class=""><a href="{{ route('berita.read', $row->slug) }}" class="fw-bold">{{ $row->judul }}</a></h4>
                                     </div>
                                     <div class="post-meta">
                                         <ul class="list-inline post-tag">
