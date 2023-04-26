@@ -10,16 +10,17 @@
                         <table class="table" style="text-align: left;">
                             <thead>
                                 <tr class="table-primary">
-                                <th scope="col">No</th>
+                                <th scope="col">#</th>
                                 <th scope="col">Nama Hotel</th>
                             </thead>
                             <tbody>
-                            <?php $i=0; foreach ($hotel as $row) : $i++; ?>
-                            <tr>
-                                <th scope="row">{{ $i }}</th>
-                                <td>{{ $row; }}</td>
-                            </tr>
-                            <?php endforeach; ?>
+                                @foreach ($hotel as $row)
+                                    <tr>
+                                        <th scope="row">{{ $loop->iteration }}</th>
+                                        <td>{{ $row; }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>

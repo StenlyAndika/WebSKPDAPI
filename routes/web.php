@@ -30,9 +30,14 @@ use App\Http\Controllers\DashboardPenghargaan;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
-Route::post('/kontak', [HomeController::class, 'kontak'])->name('kontak');
+Route::post('menu-utama/kontak', [HomeController::class, 'kontak'])->name('kontak');
 
-Route::get('/menu-pemerintahan/pemerintahan', [HomeController::class, 'pemerintahan'])->name('pemerintahan');
+Route::get('/menu-utama/pemerintahan', [HomeController::class, 'pemerintahan'])->name('pemerintahan');
+Route::get('/menu-utama/layanan-publik', [HomeController::class, 'layananpublik'])->name('layananpublik');
+Route::get('/menu-utama/layanan-pegawai', [HomeController::class, 'layananpegawai'])->name('layananpegawai');
+Route::get('/menu-utama/lpse', [HomeController::class, 'lpse'])->name('lpse');
+Route::get('/menu-utama/perencanaan-pembangunan', [HomeController::class, 'perencanaan'])->name('perencanaan');
+Route::get('/menu-utama/kotaku', [HomeController::class, 'kotaku'])->name('kotaku');
 
 Route::get('/berita', [HomeController::class, 'berita'])->name('berita');
 Route::get('/berita/read/{slug}', [HomeController::class, 'read'])->name('berita.read');
@@ -41,7 +46,7 @@ Route::get('/profil/sejarah', [HomeController::class, 'sejarah'])->name('sejarah
 Route::get('/profil/pendidikan', [HomeController::class, 'pendidikan'])->name('pendidikan');
 Route::get('/profil/kesehatan', [HomeController::class, 'kesehatan'])->name('kesehatan');
 Route::get('/profil/keuangan', [HomeController::class, 'keuangan'])->name('keuangan');
-Route::get('/profil/perbelanjaan', [HomeController::class, 'perbelanjaan'])->name('perbelanjaan');
+Route::get('/profil/pusat-perbelanjaan', [HomeController::class, 'perbelanjaan'])->name('perbelanjaan');
 Route::get('/profil/hotel', [HomeController::class, 'hotel'])->name('hotel');
 Route::get('/profil/wisata', [HomeController::class, 'wisata'])->name('wisata');
 
@@ -112,21 +117,21 @@ Route::middleware(['admin'])->group(function () {
     Route::delete('/admin/penghargaan/{penghargaan}', [DashboardPenghargaan::class, 'destroy'])->name('admin.penghargaan.destroy');
     Route::get('/admin/penghargaan/checkSlug/{keterangan}', [DashboardPenghargaan::class, 'checkSlug']);
 
-    Route::get('/admin/domainskpd', [DashboardDomainSKPD::class, 'index'])->name('admin.domainskpd.index');
-    Route::get('/admin/domainskpd/create', [DashboardDomainSKPD::class, 'create'])->name('admin.domainskpd.create');
-    Route::post('/admin/domainskpd', [DashboardDomainSKPD::class, 'store'])->name('admin.domainskpd.store');
-    Route::get('/admin/domainskpd/{domainskpd}/edit', [DashboardDomainSKPD::class, 'edit'])->name('admin.domainskpd.edit');
-    Route::put('/admin/domainskpd/{domainskpd}', [DashboardDomainSKPD::class, 'update'])->name('admin.domainskpd.update');
-    Route::patch('/admin/domainskpd/{domainskpd}', [DashboardDomainSKPD::class, 'status'])->name('admin.domainskpd.status');
-    Route::delete('/admin/domainskpd/{domainskpd}', [DashboardDomainSKPD::class, 'destroy'])->name('admin.domainskpd.destroy');
+    Route::get('/admin/domain-skpd', [DashboardDomainSKPD::class, 'index'])->name('admin.domainskpd.index');
+    Route::get('/admin/domain-skpd/create', [DashboardDomainSKPD::class, 'create'])->name('admin.domainskpd.create');
+    Route::post('/admin/domain-skpd', [DashboardDomainSKPD::class, 'store'])->name('admin.domainskpd.store');
+    Route::get('/admin/domain-skpd/{domainskpd}/edit', [DashboardDomainSKPD::class, 'edit'])->name('admin.domainskpd.edit');
+    Route::put('/admin/domain-skpd/{domainskpd}', [DashboardDomainSKPD::class, 'update'])->name('admin.domainskpd.update');
+    Route::patch('/admin/domain-skpd/{domainskpd}', [DashboardDomainSKPD::class, 'status'])->name('admin.domainskpd.status');
+    Route::delete('/admin/domain-skpd/{domainskpd}', [DashboardDomainSKPD::class, 'destroy'])->name('admin.domainskpd.destroy');
     
-    Route::get('/admin/domaindesa', [DashboardDomainDesa::class, 'index'])->name('admin.domaindesa.index');
-    Route::get('/admin/domaindesa/create', [DashboardDomainDesa::class, 'create'])->name('admin.domaindesa.create');
-    Route::post('/admin/domaindesa', [DashboardDomainDesa::class, 'store'])->name('admin.domaindesa.store');
-    Route::get('/admin/domaindesa/{domaindesa}/edit', [DashboardDomainDesa::class, 'edit'])->name('admin.domaindesa.edit');
-    Route::put('/admin/domaindesa/{domaindesa}', [DashboardDomainDesa::class, 'update'])->name('admin.domaindesa.update');
-    Route::patch('/admin/domaindesa/{domaindesa}', [DashboardDomainDesa::class, 'status'])->name('admin.domaindesa.status');
-    Route::delete('/admin/domaindesa/{domaindesa}', [DashboardDomainDesa::class, 'destroy'])->name('admin.domaindesa.destroy');
+    Route::get('/admin/domain-desa', [DashboardDomainDesa::class, 'index'])->name('admin.domaindesa.index');
+    Route::get('/admin/domain-desa/create', [DashboardDomainDesa::class, 'create'])->name('admin.domaindesa.create');
+    Route::post('/admin/domain-desa', [DashboardDomainDesa::class, 'store'])->name('admin.domaindesa.store');
+    Route::get('/admin/domain-desa/{domaindesa}/edit', [DashboardDomainDesa::class, 'edit'])->name('admin.domaindesa.edit');
+    Route::put('/admin/domain-desa/{domaindesa}', [DashboardDomainDesa::class, 'update'])->name('admin.domaindesa.update');
+    Route::patch('/admin/domain-desa/{domaindesa}', [DashboardDomainDesa::class, 'status'])->name('admin.domaindesa.status');
+    Route::delete('/admin/domain-desa/{domaindesa}', [DashboardDomainDesa::class, 'destroy'])->name('admin.domaindesa.destroy');
 
     Route::get('/admin/kepuasan', [DashboardKepuasan::class, 'index'])->name('admin.kepuasan.index');
     Route::get('/admin/kepuasan/create', [DashboardKepuasan::class, 'create'])->name('admin.kepuasan.create');

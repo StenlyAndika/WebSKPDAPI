@@ -30,23 +30,25 @@
                                 }
                             }
                         ?>
-                        <table id="datatable" class="table-bordered" width="100%">
-                        @foreach ($tmptahun as $rowx)
-                            <td colspan="2" style="background-color: #3A5BA0;" class="text-white text-center fw-bold">Tahun {{ $rowx }}</td>
-                            <tbody>
-                                @foreach ($tmpkategori as $rowz)
-                                    <tr>
-                                    <td colspan="2" class="text-danger text-center fw-bold"><?= $rowz; ?></td>
-                                        @foreach (App\Models\Dokumen::dokumenbyid($rowx, $rowz) as $row)
-                                            <tr>
-                                                <td class="text-center">-</td>
-                                                <td><a class="fw-bold" target="_blank" href="/storage/{{ $row->namafile }}">{{ $row->keterangan }}</a></td>
-                                            </tr>
-                                        @endforeach
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        @endforeach
+                        <table class="table" style="text-align: left;">
+                            @foreach ($tmptahun as $rowx)
+                                <thead>
+                                    <tr class="table-primary">
+                                    <th scope="col">Tahun <?= $rowx; ?></th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($tmpkategori as $rowz)
+                                        <tr>
+                                        <td colspan="2" class="text-danger fw-bold"><?= $rowz; ?></td>
+                                            @foreach (App\Models\Dokumen::dokumenbyid($rowx, $rowz) as $row)
+                                                <tr>
+                                                    <td><a class="fw-bold" target="_blank" href="/storage/{{ $row->namafile }}">- {{ $row->keterangan }}</a></td>
+                                                </tr>
+                                            @endforeach
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>

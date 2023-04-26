@@ -52,7 +52,7 @@
                         </a>
                     </div>
                     <div class="card border-0">
-                        <a href="/layananpublik">
+                        <a href="{{ route('layananpublik') }}">
                             <div class="card-body">
                                 <div class="card-animated">
                                     <img src="/img/layananpublik.webp" class="w-100" alt="image-icon">
@@ -61,7 +61,7 @@
                         </a>
                     </div>
                     <div class="card border-0">
-                        <a href="/layanan_pegawai">
+                        <a href="{{ route('layananpegawai') }}">
                             <div class="card-body">
                                 <div class="card-animated">
                                     <img src="/img/layananpegawai.webp" class="w-100" alt="image-icon">
@@ -70,7 +70,7 @@
                         </a>
                     </div>
                     <div class="card border-0">
-                        <a href="/lpse">
+                        <a href="{{ route('lpse') }}">
                             <div class="card-body">
                                 <div class="card-animated">
                                     <img src="/img/lpse.webp" class="w-100" alt="image-icon">
@@ -79,7 +79,7 @@
                         </a>
                     </div>
                     <div class="card border-0">
-                        <a href="/perencanaan_pembangunan">
+                        <a href="{{ route('perencanaan') }}">
                             <div class="card-body">
                                 <div class="card-animated">
                                     <img src="/img/perencanaan.webp" class="w-100" alt="image-icon">
@@ -88,7 +88,7 @@
                         </a>
                     </div>
                     <div class="card border-0">
-                        <a href="/kotaku">
+                        <a href="{{ route('kotaku') }}">
                             <div class="card-body">
                                 <div class="card-animated">
                                     <img src="/img/kotaku.webp" class="w-100" alt="image-icon">

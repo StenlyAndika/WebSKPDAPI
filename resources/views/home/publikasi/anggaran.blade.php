@@ -22,22 +22,22 @@
                                 }
                             }
                         ?>
-                        <table id="datatable" class="table-bordered" width="100%">
-                        @foreach ($tmptahun as $rowx)
-                            <td colspan="2" style="background-color: #3A5BA0;" class="text-white text-center fw-bold">Tahun <?= $rowx; ?></td>
-                            <tbody>
-                                <tr>
+                        <table class="table" style="text-align: left;">
+                            @foreach ($tmptahun as $rowx)
+                                <thead>
+                                    <tr class="table-primary">
+                                    <th scope="col">Tahun <?= $rowx; ?></th>
+                                </thead>
+                                <tbody>
                                     @foreach (App\Models\Anggaran::anggaranbyid($rowx) as $row)
                                         <tr>
-                                            <td class="text-center">-</td>
                                             <td>
-                                                <a class="fw-bold" target="_blank" href="/storage/{{ $row->namafile }}">{{ $row->keterangan }}</a>
+                                                <a class="fw-bold" target="_blank" href="/storage/{{ $row->namafile }}">- {{ $row->keterangan }}</a>
                                             </td>
                                         </tr>
                                     @endforeach
-                                </tr>
-                            </tbody>
-                        @endforeach
+                                </tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>

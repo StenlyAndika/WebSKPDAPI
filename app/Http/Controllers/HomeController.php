@@ -39,7 +39,7 @@ class HomeController extends Controller
         
         Kontak::create($validatedData);
         
-        return redirect('/')->with('success', 'Pesan anda berhasil disubmit!');
+        return redirect()->route('home')->with('success', 'Pesan anda berhasil disubmit!');
     }
 
     public function berita()
@@ -227,8 +227,43 @@ class HomeController extends Controller
 
     public function pemerintahan()
     {
-        return view('home.menu-pemerintahan.pemerintahan', [
+        return view('home.menu-utama.pemerintahan', [
             'title' => 'Pemerintahan'
+        ]);
+    }
+
+    public function layananpublik()
+    {
+        return view('home.menu-utama.layananpublik', [
+            'title' => 'Layanan Publik'
+        ]);
+    }
+
+    public function layananpegawai()
+    {
+        return view('home.menu-utama.layananpegawai', [
+            'title' => 'Layanan Pegawai'
+        ]);
+    }
+
+    public function lpse()
+    {
+        return view('home.menu-utama.lpse', [
+            'title' => 'Layanan Pengadaan Secara Elektronik'
+        ]);
+    }
+
+    public function perencanaan()
+    {
+        return view('home.menu-utama.perencanaan', [
+            'title' => 'Perencanaan Pembangunan dan Evaluasi'
+        ]);
+    }
+
+    public function kotaku()
+    {
+        return view('home.menu-utama.kotaku', [
+            'title' => 'Program Kota Tanpa Kumuh'
         ]);
     }
 }
