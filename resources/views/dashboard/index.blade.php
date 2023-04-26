@@ -34,13 +34,9 @@
                                                 <td><h6>&nbsp;:&nbsp;</h6></td>
                                                 <td><h6>{{ $row->wa }}</h6></td>
                                             </tr>
-                                            <tr>
-                                                <td><h6>Pesan</h6></td>
-                                                <td><h6>&nbsp;:&nbsp;</h6></td>
-                                            </tr>
                                         </table>
                                         <h6>
-                                        <p class="card-text" style="text-align: left;">
+                                        <p class="card-text mt-2" style="text-align: left;">
                                             <?= $row['pesan'] ?>
                                         </p>
                                         </h6>

@@ -543,21 +543,18 @@ a:focus {
   background-color : #f8f8f8;
 }
 
-.news-card {
-  display: flex;
-  flex-direction: row;
-}
-
 .card .news-card img {
+  max-width: 300px;
+  min-width: 300px;
+  max-height: 250px;
+  min-height: 250px;
   width: 30%;
 }
 
 @media (max-width: 768px) {
   .card .news-card img {
+    max-width: none;
     width: 100%;
-  }
-  .news-card {
-    display: block;
   }
 }
 
@@ -568,7 +565,6 @@ a:focus {
   margin-bottom: 15px;
   height: 200px;
   overflow: hidden;
-  border-radius: 5px;
 }
 .post-sm .post-thumb img {
   transition: 0.3s ease;

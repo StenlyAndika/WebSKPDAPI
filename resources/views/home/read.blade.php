@@ -39,8 +39,12 @@
                         <div class="news-carousel owl-carousel owl-theme">
                             @foreach ($berita as $row)
                                 <article class="post-sm">
-                                    <div class="post-thumb">
-                                        <a href="{{ route('berita.read', $row->slug) }}"><img class="image-responsive w-100" src="{{ asset('/storage/'.$row->gambar) }}" alt="Post-Image"></a>
+                                    <div class="post-thumb rounded">
+                                        <a href="{{ route('berita.read', $row->slug) }}">
+                                            <div class="card-animated">
+                                                <img class="image-fluid rounded w-100" src="{{ asset('storage/'.$row->gambar) }}" alt="Post-Image">
+                                            </div>
+                                        </a>
                                     </div>
                                     <div class="post-title">
                                         <h4 class=""><a href="{{ route('berita.read', $row->slug) }}" class="fw-bold">{{ $row->judul }}</a></h4>

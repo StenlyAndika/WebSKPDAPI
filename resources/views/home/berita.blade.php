@@ -14,10 +14,10 @@
                     <div class="news-carousel owl-carousel owl-theme">
                         @foreach ($berita as $row)
                             <article class="post-sm">
-                                <div class="post-thumb">
+                                <div class="post-thumb rounded">
                                     <a href="{{ route('berita.read', $row->slug) }}">
                                         <div class="card-animated">
-                                            <img class="image-responsive w-100" src="{{ asset('storage/'.$row->gambar) }}" alt="Post-Image">
+                                            <img class="image-fluid rounded w-100" src="{{ asset('storage/'.$row->gambar) }}" alt="Post-Image">
                                         </div>
                                     </a>
                                 </div>
@@ -58,8 +58,8 @@
                 <hr>
                 <div class="container">
                     @foreach ($berita as $row)
-                    <div class="card mb-4 news-card" data-aos="fade-up" data-aos-duration="500">
-                        <img style="border-radius: 5px; padding: 3px;" src="{{ asset('storage/'.$row->gambar) }}" class="card-img-top" alt="...">
+                    <div class="card news-card mb-4 d-block d-sm-flex flex-row" data-aos="fade-up" data-aos-duration="500">
+                        <img src="{{ asset('storage/'.$row->gambar) }}" class="card-img-top rounded p-2" alt="...">
                         <div class="card-body">
                             <div class="post-title">
                                 <h4 class="" style="text-align: left;"><a href="{{ route('berita.read', $row->slug) }}" class="fw-bold">{{ $row->judul }}</a></h4>
