@@ -7,7 +7,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <a href="{{ route('admin.pengumuman.create') }}" class="d-inline align-middle btn btn-sm btn-success mb-2"><i class="fa-solid fa-plus"></i></a>
+                            <a href="{{ route('admin.pengumuman.create') }}" class="d-inline align-middle btn btn-sm btn-success mb-2"><i class="bi bi-plus-lg"></i></a>
                             <h3 class="mt-3 d-inline align-middle">Pengumuman</h3>
                         </div>
                         <div class="card-body card-block">
@@ -28,11 +28,11 @@
                                             <td style="text-align: center;">{{ Carbon\Carbon::parse($row->created_at)->isoFormat('D MMMM Y') }}</td>
                                             <td style="text-align: left;">{{ $row->judul }}</td>
                                             <td>
-                                                <a href="{{ route('admin.pengumuman.edit', $row->slug) }}" class="btn btn-block btn-sm btn-primary"><i class="fa-solid fa-pen"></i></a>
+                                                <a href="{{ route('admin.pengumuman.edit', $row->slug) }}" class="btn btn-block btn-sm btn-primary"><i class="bi bi-pencil-square"></i></a>
                                                 <form action="{{ route('admin.pengumuman.destroy', $row->slug) }}" method="post" class="d-inline">
                                                     @method('delete')
                                                     @csrf
-                                                    <button type="submit" class="btn btn-block btn-sm btn-danger" onclick="return confirm('Hapus Data ini?');"><i class="fa-solid fa-trash"></i></button>
+                                                    <button type="submit" class="btn btn-block btn-sm btn-danger" onclick="return confirm('Hapus Data ini?');"><i class="bi bi-x-square"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

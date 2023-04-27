@@ -2,10 +2,9 @@
 
 @section('container')
     <section class="user-login section" style="padding: 100px 0;">
-        <div class="container col-lg-4">
+        <div class="container col-lg-3">
             <div class="block">
                 <div class="content">
-                    <h5>Login</h5>
                     @if (session('loginError'))
                         <div class="alert alert-danger">
                             {{ session('loginError') }}
@@ -19,8 +18,8 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                        <input type="password" name="password" class="form-control" placeholder="Password">
-                        <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button>
+                        <input type="password" name="password" class="form-control mt-1" placeholder="Password">
+                        <button type="submit" class="btn btn-md btn-primary btn-block mt-2">Login</button>
                     </form>
                 </div>
             </div>

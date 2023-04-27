@@ -1,10 +1,8 @@
 <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex justify-content-between">
-
         <div class="navbar-brand">
             <a aria-label="home" href="{{ route('home') }}"><img src="/img/logo.webp" alt="" class="img-fluid"></a>
         </div>
-
         <nav id="navbar" class="navbar">
             <ul>
                 @can('admin')

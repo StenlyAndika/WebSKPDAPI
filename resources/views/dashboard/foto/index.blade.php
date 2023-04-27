@@ -7,7 +7,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <a href="{{ route('admin.foto.create') }}" class="d-inline align-middle btn btn-sm btn-success mb-2"><i class="fa-solid fa-plus"></i></a>
+                            <a href="{{ route('admin.foto.create') }}" class="d-inline align-middle btn btn-sm btn-success mb-2"><i class="bi bi-plus-lg"></i></a>
                             <h3 class="mt-3 d-inline align-middle">Galeri Foto</h3>
                         </div>
                         <div class="card-body card-block">
@@ -31,7 +31,7 @@
                                                 <form action="{{ route('admin.foto.destroy', $row->id) }}" method="post" class="d-inline">
                                                     @method('delete')
                                                     @csrf
-                                                    <button type="submit" class="btn btn-block btn-sm btn-danger" onclick="return confirm('Hapus Data ini?');"><i class="fa-solid fa-trash"></i></button>
+                                                    <button type="submit" class="btn btn-block btn-sm btn-danger" onclick="return confirm('Hapus Data ini?');"><i class="bi bi-x-square"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

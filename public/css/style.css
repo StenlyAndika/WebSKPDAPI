@@ -187,7 +187,6 @@ a:focus {
 }
 
 .navbar .dropdown ul a {
-  /* padding: 10px 20px; */
   font-size: 14px;
   text-transform: none;
 }
@@ -1023,23 +1022,6 @@ ul.post-tag li:last-child {
 
 /* Login Register
 --------------------------------*/
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-.form-registration input {
-  border-radius: 0;
-  margin-bottom: -1px;
-}
 .user-login {
   height: 100%;
   width: 100%;

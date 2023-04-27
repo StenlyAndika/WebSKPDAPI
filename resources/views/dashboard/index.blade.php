@@ -13,29 +13,9 @@
                             @foreach ($pesan as $row)
                                 <div class="card cardx col-lg-12">
                                     <div class="card-body">
-                                        <table border="0">
-                                            <tr>
-                                                <td><h6>Tanggal</h6></td>
-                                                <td><h6>&nbsp;:&nbsp;</h6></td>
-                                                <td><h6>{{ Carbon\Carbon::parse($row->created_at)->isoFormat('D MMMM Y') }}</h6></td>
-                                            </tr>
-                                            <tr>
-                                                <td><h6>Email</h6></td>
-                                                <td><h6>&nbsp;:&nbsp;</h6></td>
-                                                <td><h6>{{ $row->email }}</h6></td>
-                                            </tr>
-                                            <tr>
-                                                <td><h6>Nama</h6></td>
-                                                <td><h6>&nbsp;:&nbsp;</h6></td>
-                                                <td><h6>{{ $row->nama }}</h6></td>
-                                            </tr>
-                                            <tr>
-                                                <td><h6>Nomor WA</h6></td>
-                                                <td><h6>&nbsp;:&nbsp;</h6></td>
-                                                <td><h6>{{ $row->wa }}</h6></td>
-                                            </tr>
-                                        </table>
-                                        <h6>
+                                        <h6 class="card-title" style="text-align: left;">{{ Carbon\Carbon::parse($row->created_at)->isoFormat('D MMMM Y') }}</h6>
+                                        <h5 class="card-title" style="text-align: left;">{{ $row->nama }} : <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ $row->email }}" target="_blank">{{ $row->email }}</a></h5>
+                                        <h5 class="card-title" style="text-align: left;"><a href="https://wa.me/{{ $row->wa }}" target="_blank">{{ $row->wa }}</a></h5>
                                         <p class="card-text mt-2" style="text-align: left;">
                                             <?= $row['pesan'] ?>
                                         </p>
@@ -43,7 +23,7 @@
                                         <form action="{{ route('admin.dashboard.destroy', $row->id) }}" method="post" class="d-inline">
                                             @method('delete')
                                             @csrf
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Hapus pesan ini?');"><i class="fa-solid fa-trash"></i></button>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Hapus pesan ini?');"><i class="bi bi-x-square"></i></button>
                                         </form>
                                     </div>
                                 </div>

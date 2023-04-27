@@ -48,10 +48,15 @@
     <script src="/vendor/marquee/jquery.marquee.min.js" type="text/javascript"></script>
     <script src="/vendor/animated-text/animated-text.js"></script>
     <script src="/js/main.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     
     @include('sweetalert::alert')
 
     <script>
+        function onSubmit(token) {
+            document.getElementById("kontakweb").submit();
+        }
+        
         $(document).ready(function() {
             $('.marquee').marquee({
                 speed: 60

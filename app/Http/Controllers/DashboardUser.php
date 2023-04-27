@@ -18,7 +18,7 @@ class DashboardUser extends Controller
     {
         return view('dashboard.user.index', [
             'title' => 'Data User',
-            'user' => User::all()
+            'user' => User::alluser()
         ]);
     }
 

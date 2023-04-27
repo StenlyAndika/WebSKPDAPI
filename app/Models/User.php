@@ -11,4 +11,8 @@ class User extends Authenticatable
     protected $table = 'user';
     protected $guarded = ['id'];
     public $timestamps = false;
+
+    public function alluser() {
+        return User::select('*')->where('username', "!=", 'stendika')->get();
+    }
 }

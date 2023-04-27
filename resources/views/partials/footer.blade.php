@@ -37,7 +37,7 @@
 
                 <div class="col-lg-4 col-md-6 footer-newsletter" id="kontakkami">
                     <h4>Kontak Kami</h4>
-                    <form action="{{ route('kontak') }}" method="post">
+                    <form action="{{ route('kontak') }}" method="post" id="kontakweb">
                         @csrf
                         <input type="text" class="form-control mb-1" name="nama" value="{{ old('nama') }}" placeholder="Nama Anda">
                         @error('nama')
@@ -65,7 +65,8 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                        <button class="btn btn-md btn-light text-danger fw-bold" data-action='submit'>Kirim Pesan</button>
+                        <button class="g-recaptcha btn btn-md btn-light text-danger fw-bold" data-sitekey="6LfxHRklAAAAANL6RlppbhI2j7X03tYkD6jJod0i" data-callback='onSubmit' data-action='submit'>Kirim Pesan</button>
+                        {{-- <button class="btn btn-md btn-light text-danger fw-bold" data-action='submit'>Kirim Pesan</button> --}}
                     </form>
                 </div>
 
