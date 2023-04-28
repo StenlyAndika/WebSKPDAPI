@@ -64,7 +64,13 @@
                             <div class="post-title">
                                 <h4 class="" style="text-align: left;"><a href="{{ route('berita.read', $row->slug) }}" class="fw-bold">{{ $row->judul }}</a></h4>
                             </div>
-                            <p style="text-align: left; color: red; font-size: 14px;" class="mb-2"><i class="bi bi-calendar"></i> {{ Carbon\Carbon::parse($row->created_at)->isoFormat('D MMMM Y') }}</p>
+                            <li class="list-inline-item">
+                                <a href="#" style="color: #3A5BA0; font-weight: bold;">{{ $row->nama }}</a>
+                            </li>
+                            <li class="list-inline-item" style="color: red; font-size: 14px;">
+                                <i class="bi bi-calendar"></i>
+                                {{ Carbon\Carbon::parse($row->created_at)->isoFormat('D MMMM Y') }}
+                            </li>
                             <p class="card-text berita-mini" style="text-align: left;">
                                 <?php
                                     $string = strip_tags($row->isi);

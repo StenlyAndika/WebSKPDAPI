@@ -75,7 +75,7 @@
                 </div>
             @else
                 @foreach($kepuasan as $row)
-                    <h4 class="small fw-bold">&nbsp; <span class="float-left">Tahun <?= $row['tahun'] ?> - Nilai : {{ $row->nilai }}</span><span class="float-right">{{ $row->predikat }}</span></h4>
+                    <h4 class="small fw-bold">&nbsp; <span class="float-left">Tahun <?= $row['tahun'] ?> - Nilai : {{ $row->nilai }}</span><span class="float-right"> {{ $row->predikat }}</span></h4>
                     <div class="progress mb-4">
                         <span class="float-left"></span>
                         <div class="progress-bar @if (round($row->nilai) >= 90) bg-primary @elseif (round($row->nilai) >= 80) bg-success @elseif (round($row->nilai) >= 70) bg-warning @else bg-danger @endif" role="progressbar" style="width: {{ (round($row->nilai)) }}%" aria-valuenow="{{ $row->nilai }}" aria-valuemin="0" aria-valuemax="100"></div>

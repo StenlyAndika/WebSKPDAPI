@@ -71,13 +71,13 @@
                 <span class="title">Penghargaan</span>
             </a>
         </li>
-        <li class="list {{ Request::is('admin/domainskpd*') ? 'active' : '' }}">
+        <li class="list {{ Request::is('admin/domain-skpd*') ? 'active' : '' }}">
             <a href="{{ route('admin.domainskpd.index') }}">
                 <span class="icon"><i class="bi bi-link"></i></span>
                 <span class="title">Domain SKPD</span>
             </a>
         </li>
-        <li class="list {{ Request::is('admin/domaindesa*') ? 'active' : '' }}">
+        <li class="list {{ Request::is('admin/domain-desa*') ? 'active' : '' }}">
             <a href="{{ route('admin.domaindesa.index') }}">
                 <span class="icon"><i class="bi bi-link"></i></span>
                 <span class="title">Domain Desa</span>
