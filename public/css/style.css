@@ -69,7 +69,7 @@ a:focus {
   position: fixed;
   visibility: hidden;
   opacity: 0;
-  right: 25px;
+  right: 15px;
   bottom: 15px;
   z-index: 996;
   background: #007bff;
@@ -1014,7 +1014,7 @@ ul.post-tag li:last-child {
   width: 70px !important;
   overflow: hidden !important;
   transition: all 0.3s ease !important;
-  left: 4px !important;
+  left: 15px !important;
 }
 .grecaptcha-badge:hover {
   width: 256px !important;
