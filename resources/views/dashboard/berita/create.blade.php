@@ -23,7 +23,7 @@
                             </div>
                             <div class="form-floating mb-1">
                                 <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" placeholder="slug" name="slug" value="{{ old('slug') }}" readonly>
-                                <label for="slug">Judul</label>
+                                <label for="slug">Slug</label>
                                 @error('slug')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -59,14 +59,10 @@
         const judul = document.querySelector('#judul');
         const slugs = document.querySelector('#slug');
         
-        let timer, timeoutVal = 500;
-        judul.addEventListener('keyup', function(e) {
-            window.clearTimeout(timer);
-            timer = window.setTimeout(() => {
-                fetch('/admin/berita/checkSlug/' + judul.value)
-                .then(response => response.json())
-                .then(data => slugs.value = data.slug)
-            }, timeoutVal);
+        judul.addEventListener('change', function(e) {
+            fetch('/admin/berita/checkSlug/' + judul.value)
+            .then(response => response.json())
+            .then(data => slugs.value = data.slug)
         })
 
         function previewImage() {
