@@ -15,8 +15,9 @@ use App\Http\Controllers\Api\ApiBeritaController;
 |
 */
 
-Route::get('berita', [ApiBeritaController::class, 'index']);
-Route::get('berita/show/{slug}', [ApiBeritaController::class, 'show']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('berita', [ApiBeritaController::class, 'index']);
+Route::get('berita-carousel', [ApiBeritaController::class, 'carousel']);

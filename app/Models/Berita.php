@@ -54,4 +54,26 @@ class Berita extends Model
             ->limit($limit)
             ->get();
     }
+
+
+    public function api_berita_page() {
+        $query = Berita::join('user', 'berita.nama', '=', 'user.username')
+            ->select('berita.*', 'user.nama');
+    
+        if (request('search')) {
+            $query->where('berita.judul', 'LIKE', '%' . request('search') . '%')->orWhere('user.nama', 'LIKE', '%' . request('search') . '%');
+        }
+    
+        $query->orderBy('created_at', 'DESC');
+
+        return $query->paginate(10);
+    }
+
+    public function api_berita_carousel() {
+        return Berita::join('user', 'berita.nama', '=', 'user.username')
+        ->select('berita.*', 'user.nama')
+        ->orderBy('created_at', 'DESC')
+        ->limit(5)
+        ->get();
+    }
 }

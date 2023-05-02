@@ -53,10 +53,6 @@
     @include('sweetalert::alert')
 
     <script>
-        function onSubmit(token) {
-            document.getElementById("kontakweb").submit();
-        }
-        
         $(document).ready(function() {
             $('.marquee').marquee({
                 speed: 60

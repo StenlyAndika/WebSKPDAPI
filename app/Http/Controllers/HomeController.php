@@ -32,7 +32,8 @@ class HomeController extends Controller
             'nama' => 'required',
             'wa' => 'required',
             'email' => 'required|email:dns',
-            'pesan' => 'required'
+            'pesan' => 'required',
+            'g-recaptcha-response' => 'required'
         ];
 
         $validatedData = $request->validate($rules);

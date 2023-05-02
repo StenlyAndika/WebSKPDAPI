@@ -65,11 +65,10 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                        <button class="g-recaptcha btn btn-md btn-light text-danger fw-bold" data-sitekey="6LfxHRklAAAAANL6RlppbhI2j7X03tYkD6jJod0i" data-callback='onSubmit' data-action='submit'>Kirim Pesan</button>
-                        {{-- <button class="btn btn-md btn-light text-danger fw-bold" data-action='submit'>Kirim Pesan</button> --}}
+                        <div class="g-recaptcha mb-1" data-sitekey="6LdcY9QlAAAAALm2miIX0_yMBEiXSKuEdqhD5a-B"></div>
+                        <button class="btn btn-md btn-light text-danger fw-bold">Kirim Pesan</button>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>

@@ -16,7 +16,18 @@ class ApiBeritaController extends Controller
      */
     public function index()
     {
-        $data = Berita::allberita();   
+        $data = Berita::api_berita_page();
+
+        if($data) {
+            return ApiFormatter::response(200, 'success', $data);
+        } else {
+            return ApiFormatter::response(404, 'failed');
+        }
+    }
+
+    public function carousel()
+    {
+        $data = Berita::api_berita_carousel();
 
         if($data) {
             return ApiFormatter::response(200, 'success', $data);
