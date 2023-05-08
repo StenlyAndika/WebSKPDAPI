@@ -89,6 +89,12 @@
                 <span class="title">Agenda Kota</span>
             </a>
         </li>
+        <li class="list {{ Request::is('admin/wisata*') ? 'active' : '' }}">
+            <a href="{{ route('admin.wisata.index') }}">
+                <span class="icon"><i class="bi bi-map"></i></span>
+                <span class="title">Destinasi Wisata</span>
+            </a>
+        </li>
         <li class="list {{ Request::is('admin/kepuasan*') ? 'active' : '' }}">
             <a href="{{ route('admin.kepuasan.index') }}">
                 <span class="icon"><i class="bi bi-clipboard-data"></i></span>

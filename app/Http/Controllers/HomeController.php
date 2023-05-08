@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Agenda;
 use App\Models\Berita;
 use App\Models\Kontak;
+use App\Models\Wisata;
 use App\Models\Dokumen;
 use App\Models\Anggaran;
 use App\Models\Kepuasan;
@@ -135,7 +136,8 @@ class HomeController extends Controller
             'title' => 'Wisata Kota Sungai Penuh',
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
-            'berita' => Berita::beritalimit(3)
+            'berita' => Berita::beritalimit(3),
+            'wisata' => Wisata::all()
         ]);
     }
 

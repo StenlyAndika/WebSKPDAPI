@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardAgenda;
 use App\Http\Controllers\DashboardBerita;
+use App\Http\Controllers\DashboardWisata;
 use App\Http\Controllers\DashboardDokumen;
 use App\Http\Controllers\DashboardService;
 use App\Http\Controllers\DashboardAnggaran;
@@ -132,6 +133,13 @@ Route::middleware(['admin'])->group(function () {
     Route::put('/admin/domain-desa/{domaindesa}', [DashboardDomainDesa::class, 'update'])->name('admin.domaindesa.update');
     Route::patch('/admin/domain-desa/{domaindesa}', [DashboardDomainDesa::class, 'status'])->name('admin.domaindesa.status');
     Route::delete('/admin/domain-desa/{domaindesa}', [DashboardDomainDesa::class, 'destroy'])->name('admin.domaindesa.destroy');
+
+    Route::get('/admin/wisata', [DashboardWisata::class, 'index'])->name('admin.wisata.index');
+    Route::get('/admin/wisata/create', [DashboardWisata::class, 'create'])->name('admin.wisata.create');
+    Route::post('/admin/wisata', [DashboardWisata::class, 'store'])->name('admin.wisata.store');
+    Route::get('/admin/wisata/{wisata}/edit', [DashboardWisata::class, 'edit'])->name('admin.wisata.edit');
+    Route::put('/admin/wisata/{wisata}', [DashboardWisata::class, 'update'])->name('admin.wisata.update');
+    Route::delete('/admin/wisata/{wisata}', [DashboardWisata::class, 'destroy'])->name('admin.wisata.destroy');
 
     Route::get('/admin/kepuasan', [DashboardKepuasan::class, 'index'])->name('admin.kepuasan.index');
     Route::get('/admin/kepuasan/create', [DashboardKepuasan::class, 'create'])->name('admin.kepuasan.create');
