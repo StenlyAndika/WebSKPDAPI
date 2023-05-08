@@ -20,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('berita', [ApiBeritaController::class, 'index']);
-Route::get('berita-carousel', [ApiBeritaController::class, 'carousel']);
+Route::get('berita/carousel', [ApiBeritaController::class, 'carousel']);

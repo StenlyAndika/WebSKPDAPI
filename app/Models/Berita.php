@@ -56,17 +56,19 @@ class Berita extends Model
     }
 
 
-    public function api_berita_page() {
+    public function api_berita() {
         $query = Berita::join('user', 'berita.nama', '=', 'user.username')
             ->select('berita.*', 'user.nama');
     
         if (request('search')) {
             $query->where('berita.judul', 'LIKE', '%' . request('search') . '%')->orWhere('user.nama', 'LIKE', '%' . request('search') . '%');
         }
-    
-        $query->orderBy('created_at', 'DESC');
 
-        return $query->paginate(10);
+        $query->orderBy('created_at', 'DESC');
+        $perPage = request('per_page', 10);
+        $page = request('page', 1);
+        $offset = ($page - 1) * $perPage;
+        return $query->offset($offset)->limit($perPage)->get();
     }
 
     public function api_berita_carousel() {

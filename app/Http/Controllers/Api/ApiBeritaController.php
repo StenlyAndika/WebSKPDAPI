@@ -16,10 +16,10 @@ class ApiBeritaController extends Controller
      */
     public function index()
     {
-        $data = Berita::api_berita_page();
+        $result = Berita::api_berita();
 
-        if($data) {
-            return ApiFormatter::response(200, 'success', $data);
+        if($result->count() > 0) {
+            return ApiFormatter::response(200, 'success', $result);
         } else {
             return ApiFormatter::response(404, 'failed');
         }
