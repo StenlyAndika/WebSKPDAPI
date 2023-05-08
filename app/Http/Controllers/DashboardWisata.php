@@ -61,10 +61,10 @@ class DashboardWisata extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Berita $wisata
+     * @param  \App\Models\Wisata $wisata
      * @return \Illuminate\Http\Response
      */
-    public function show(Berita $wisata)
+    public function show(Wisata $wisata)
     {
         
     }
@@ -72,10 +72,10 @@ class DashboardWisata extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Berita $wisata
+     * @param  \App\Models\Wisata $wisata
      * @return \Illuminate\Http\Response
      */
-    public function edit(Berita $wisata)
+    public function edit(Wisata $wisata)
     {
         return view('dashboard.wisata.edit', [
             'title' => 'Edit Wisata'
@@ -86,10 +86,10 @@ class DashboardWisata extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \App\Models\Berita $wisata
+     * @param  \App\Models\Wisata $wisata
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Berita $wisata)
+    public function update(Request $request, Wisata $wisata)
     {
         $rules = [
             'lokasi' => 'required',
@@ -113,10 +113,10 @@ class DashboardWisata extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Berita $wisata
+     * @param  \App\Models\Wisata $wisata
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Berita $wisata)
+    public function destroy(Wisata $wisata)
     {
         if($wisata->gambar) {
             Storage::delete($wisata->gambar);
