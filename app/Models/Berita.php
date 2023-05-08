@@ -55,8 +55,9 @@ class Berita extends Model
             ->get();
     }
 
+    // API ---------------------------------------------------------
 
-    public function api_berita() {
+    public function apiAllBerita() {
         $query = Berita::join('user', 'berita.nama', '=', 'user.username')
             ->select('berita.*', 'user.nama');
     
@@ -71,7 +72,7 @@ class Berita extends Model
         return $query->offset($offset)->limit($perPage)->get();
     }
 
-    public function api_berita_carousel() {
+    public function apiAllBeritaCarousel() {
         return Berita::join('user', 'berita.nama', '=', 'user.username')
         ->select('berita.*', 'user.nama')
         ->orderBy('created_at', 'DESC')

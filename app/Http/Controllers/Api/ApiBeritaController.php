@@ -16,7 +16,7 @@ class ApiBeritaController extends Controller
      */
     public function index()
     {
-        $result = Berita::api_berita();
+        $result = Berita::apiAllBerita();
 
         if($result->count() > 0) {
             return ApiFormatter::response(200, 'success', $result);
@@ -27,7 +27,7 @@ class ApiBeritaController extends Controller
 
     public function carousel()
     {
-        $data = Berita::api_berita_carousel();
+        $data = Berita::apiAllBeritaCarousel();
 
         if($data) {
             return ApiFormatter::response(200, 'success', $data);
