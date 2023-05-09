@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Agenda;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardAgenda extends Controller
 {

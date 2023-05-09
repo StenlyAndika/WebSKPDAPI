@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Pelayanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardPelayanan extends Controller
 {
@@ -44,11 +43,12 @@ class DashboardPelayanan extends Controller
     {
         $rules = [
             'jenis' => 'required',
-            'standar' => 'required',
             'gambar' => 'image|file'
         ];
 
         $validatedData = $request->validate($rules);
+        
+        $validatedData['standar'] = $request['standar'];
 
         if ($request->file('gambar')) {
             $validatedData['gambar'] = $request->file('gambar')->store('upload/pelayanan');
@@ -95,12 +95,13 @@ class DashboardPelayanan extends Controller
     public function update(Request $request, Pelayanan $pelayanan)
     {
         $rules = [
-            'judul' => 'required',
-            'standar' => 'required',
+            'jenis' => 'required',
             'gambar' => 'image|file'
         ];
 
         $validatedData = $request->validate($rules);
+        
+        $validatedData['standar'] = $request['standar'];
 
         if ($request->file('gambar')) {
             if($request->oldImage) {

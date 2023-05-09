@@ -4,9 +4,9 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-6 footer-info">
-                    <a aria-label="home" href="/"><img src="/img/tablogo.webp" alt="" class="img-fluid" width="150px"></a>
+                    <a aria-label="home" href="/"><img src="@if ($profil) {{ asset('storage/'.$profil->logo) }} @else /img/tablogo.webp @endif" alt="" class="img-fluid" width="150px"></a>
                     <p>
-                        Website resmi {{ $profil->nama }}.<br>
+                        Website resmi @if ($profil) {{ $profil->nama }} @else Instansi @endif.<br>
                         Menyediakan seputar informasi dalam pemerintahan kota sungai penuh.
                     </p>
                 </div>
@@ -21,14 +21,14 @@
                 <div class="col-lg-3 col-md-6 footer-contact">
                     <h4>Tentang Kami</h4>
                     <p>
-                        {{ $profil->alamat }}
+                        @if ($profil) {{ $profil->alamat }} @else Instansi @endif
                     </p>
 
                     <div class="social-links">
-                        <a aria-label="mail" href="https://mail.google.com/mail/?view=cm&fs=1&to={{ $profil->email }}" target="_blank" class="email"><i class="bi bi-envelope-fill"></i></a>
-                        <a aria-label="facebook" href="https://www.facebook.com/{{ $profil->fb }}" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
-                        <a aria-label="twitter" href="https://twitter.com/{{ $profil->tw }}" target="_blank" class="twitter"><i class="bi bi-twitter"></i></a>
-                        <a aria-label="instagram" href="https://instagram.com/{{ $profil->ig }}" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
+                        <a aria-label="mail" href="https://mail.google.com/mail/?view=cm&fs=1&to=@if ($profil) {{ $profil->email }} @else Instansi @endif" target="_blank" class="email"><i class="bi bi-envelope-fill"></i></a>
+                        <a aria-label="facebook" href="@if ($profil) {{ $profil->fb }} @else Instansi @endif" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
+                        <a aria-label="twitter" href="@if ($profil) {{ $profil->tw }} @else Instansi @endif" target="_blank" class="twitter"><i class="bi bi-twitter"></i></a>
+                        <a aria-label="instagram" href="@if ($profil) {{ $profil->ig }} @else Instansi @endif" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
                     </div>
                 </div>
 

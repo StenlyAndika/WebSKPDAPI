@@ -7,7 +7,7 @@
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header">
-						<h1 class="mt-3">Standar Pelayanan</h1>
+						<h1 class="mt-3">Form Standar Pelayanan</h1>
 					</div>
 					<div class="card-body card-block">            
                         <form method="post" action="{{ route('admin.pelayanan.store') }}" enctype="multipart/form-data">

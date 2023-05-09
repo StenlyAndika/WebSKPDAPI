@@ -7,7 +7,7 @@
                 <div class="card-body row align-items-center">
                     <div class="col-md-10 order-1 order-md-1 text-md-left" data-aos="fade-left" data-aos-duration="500">
                         <h1 class="fw-bold" style="color: #000;">Website Resmi</h1>
-                        <h1 class="fw-bold" style="color: #2e7eed;">Pemerintah Kota Sungai Penuh</h1>
+                        <h1 class="fw-bold" style="color: #2e7eed;">@if ($profil) {{ $profil->nama }} @else Pemerintah Kota Sungai Penuh @endif</h1>
                     </div>
                 </div>
                 <div class="container">

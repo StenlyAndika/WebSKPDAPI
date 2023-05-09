@@ -51,7 +51,7 @@ class DashboardPengumuman extends Controller
         $rules = [
             'judul' => 'required',
             'slug' => 'required|unique:pengumuman',
-            'namafile' => 'file|mimes:pdf|max:2048'
+            'namafile' => 'file|max:2048'
         ];
 
         $validatedData = $request->validate($rules);
@@ -100,7 +100,7 @@ class DashboardPengumuman extends Controller
     {
         $rules = [
             'judul' => 'required',
-            'namafile' => 'file|mimes:pdf'
+            'namafile' => 'file|max:2048'
         ];
 
         if ($request->slug != $pengumuman->slug) {

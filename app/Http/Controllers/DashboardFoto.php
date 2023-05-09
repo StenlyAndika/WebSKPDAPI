@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use App\Models\Foto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardFoto extends Controller
 {

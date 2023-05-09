@@ -138,13 +138,13 @@ class HomeController extends Controller
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
             'berita' => Berita::beritalimit(3),
-            'pengumuman' => Pengumuman::all()
+            'pengumuman' => Pengumuman::orderBy('created_at', 'DESC')->get()
         ]);
     }
 
     public function penghargaan()
     {
-        return view('home.publikasi.penghargaan', [
+        return view('home.galeri.penghargaan', [
             'profil' => Profil::first(),
             'title' => Profil::first() ? 'Penghargaan '.Profil::first()->nama : 'Penghargaan Instansi',
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),

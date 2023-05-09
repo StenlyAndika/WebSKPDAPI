@@ -5,8 +5,8 @@
                 <h6 class="m-0 fw-bold">KEPALA INSTANSI</h6>
             </div>
             <div class="card-body">
-                <div  class="img-fluid img-responsive center-block"><img style="object-fit: cover; width: 100%; height: 400px;" src="{{ asset('storage/'.$profil->fotokepala) }}"></div>
-                <h5 style="font-size: 18px !important;" class="fw-bold m-0 mt-3 ">{{ $profil->kepala }}</h5>
+                <div  class="img-fluid img-responsive center-block"><img style="object-fit: cover; width: 100%; height: 400px;" src="@if ($profil) {{ asset('storage/'.$profil->fotokepala) }} @else /img/avatar.webp @endif"></div>
+                <h5 style="font-size: 18px !important;" class="fw-bold m-0 mt-3 ">@if ($profil) {{ $profil->kepala }} @else Nama Kepala Instansi @endif</h5>
             </div>
         </div>
     </div>

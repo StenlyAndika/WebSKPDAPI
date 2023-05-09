@@ -5,7 +5,7 @@
         <div class="card shadow">
             <div class="card-body">
                 <div class="container">
-                    <h2 class="fw-bold mb-4" style="text-align: center;">Galeri Foto<br>{{ $profil->nama }}</h2>
+                    <h2 class="fw-bold mb-4" style="text-align: center;">Galeri Foto<br>@if ($profil) {{ $profil->nama }} @else Instansi @endif</h2>
                     <?php
                         $tmpkegiatan = [];
                         $a = "";

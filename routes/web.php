@@ -99,14 +99,6 @@ Route::middleware(['admin'])->group(function () {
     Route::put('/admin/foto/{foto}', [DashboardFoto::class, 'update'])->name('admin.foto.update');
     Route::delete('/admin/foto/{foto}', [DashboardFoto::class, 'destroy'])->name('admin.foto.destroy');
 
-    Route::get('/admin/pelayanan', [DashboardPelayanan::class, 'index'])->name('admin.pelayanan.index');
-    Route::get('/admin/pelayanan/{pelayanan}', [DashboardPelayanan::class, 'show'])->name('admin.pelayanan.show');
-    Route::get('/admin/pelayanan/create', [DashboardPelayanan::class, 'create'])->name('admin.pelayanan.create');
-    Route::post('/admin/pelayanan', [DashboardPelayanan::class, 'store'])->name('admin.pelayanan.store');
-    Route::get('/admin/pelayanan/{pelayanan}/edit', [DashboardPelayanan::class, 'edit'])->name('admin.pelayanan.edit');
-    Route::put('/admin/pelayanan/{pelayanan}', [DashboardPelayanan::class, 'update'])->name('admin.pelayanan.update');
-    Route::delete('/admin/pelayanan/{pelayanan}', [DashboardPelayanan::class, 'destroy'])->name('admin.pelayanan.destroy');
-
     Route::get('/admin/penghargaan', [DashboardPenghargaan::class, 'index'])->name('admin.penghargaan.index');
     Route::get('/admin/penghargaan/create', [DashboardPenghargaan::class, 'create'])->name('admin.penghargaan.create');
     Route::post('/admin/penghargaan', [DashboardPenghargaan::class, 'store'])->name('admin.penghargaan.store');
@@ -121,6 +113,14 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/kepuasan/{kepuasan}/edit', [DashboardKepuasan::class, 'edit'])->name('admin.kepuasan.edit');
     Route::put('/admin/kepuasan/{kepuasan}', [DashboardKepuasan::class, 'update'])->name('admin.kepuasan.update');
     Route::delete('/admin/kepuasan/{kepuasan}', [DashboardKepuasan::class, 'destroy'])->name('admin.kepuasan.destroy');
+
+    Route::get('/admin/pelayanan', [DashboardPelayanan::class, 'index'])->name('admin.pelayanan.index');
+    Route::get('/admin/pelayanan/create', [DashboardPelayanan::class, 'create'])->name('admin.pelayanan.create');
+    Route::post('/admin/pelayanan', [DashboardPelayanan::class, 'store'])->name('admin.pelayanan.store');
+    Route::get('/admin/pelayanan/{pelayanan}/show', [DashboardPelayanan::class, 'show'])->name('admin.pelayanan.show');
+    Route::get('/admin/pelayanan/{pelayanan}/edit', [DashboardPelayanan::class, 'edit'])->name('admin.pelayanan.edit');
+    Route::put('/admin/pelayanan/{pelayanan}', [DashboardPelayanan::class, 'update'])->name('admin.pelayanan.update');
+    Route::delete('/admin/pelayanan/{pelayanan}', [DashboardPelayanan::class, 'destroy'])->name('admin.pelayanan.destroy');
 
     Route::get('/admin/agenda', [DashboardAgenda::class, 'index'])->name('admin.agenda.index');
     Route::get('/admin/agenda/create', [DashboardAgenda::class, 'create'])->name('admin.agenda.create');

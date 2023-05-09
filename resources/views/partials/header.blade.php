@@ -55,10 +55,7 @@
                         @endif
                     </td>
                     <td>
-                        @if ($profil == null)
-                            <h3 class="stroke-double" title="Instansi Pemerintah" style="text-align: left;">Instansi Pemerintah</h3>
-                            <h5 class="acidsb" style="text-align: left;">Pemerintah Kota Sungai Penuh</h5>
-                        @else
+                        @if ($profil != null)
                             <h3 class="stroke-double" title="{{ $profil->nama }}" style="text-align: left;">{{ $profil->nama }}</h3>
                             <h5 class="acidsb" style="text-align: left;">Pemerintah Kota Sungai Penuh</h5>
                         @endif
