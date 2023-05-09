@@ -7,10 +7,12 @@ use App\Models\User;
 use App\Models\Agenda;
 use App\Models\Berita;
 use App\Models\Kontak;
+use App\Models\Profil;
 use App\Models\Wisata;
 use App\Models\Dokumen;
 use App\Models\Anggaran;
 use App\Models\Kepuasan;
+use App\Models\Pelayanan;
 use App\Models\DomainDesa;
 use App\Models\DomainSKPD;
 use App\Models\Pengumuman;
@@ -23,7 +25,11 @@ class HomeController extends Controller
     public function home()
     {
         return view('home.index', [
-            'title' => 'Website Resmi Pemerintah Kota Sungai Penuh'
+            'title' => Profil::first() ? 'Website Resmi '.Profil::first()->nama : 'Website Resmi Instansi',
+            'profil' => Profil::first(),
+            'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
+            'agenda' => Agenda::agendalimit('3'),
+            'berita' => Berita::allberita()
         ]);
     }
 
@@ -33,8 +39,7 @@ class HomeController extends Controller
             'nama' => 'required',
             'wa' => 'required',
             'email' => 'required|email:dns',
-            'pesan' => 'required',
-            'g-recaptcha-response' => 'required'
+            'pesan' => 'required'
         ];
 
         $validatedData = $request->validate($rules);
@@ -44,19 +49,10 @@ class HomeController extends Controller
         return redirect()->route('home')->with('success', 'Pesan anda berhasil disubmit!');
     }
 
-    public function berita()
-    {
-        return view('home.berita', [
-            'title' => 'Berita Kota Sungai Penuh',
-            'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
-            'agenda' => Agenda::agendalimit('3'),
-            'berita' => Berita::allberita()
-        ]);
-    }
-
     public function read($slug)
     {
         return view('home.read', [
+            'profil' => Profil::first(),
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
             'berita' => Berita::beritalimit(3),
@@ -68,83 +64,41 @@ class HomeController extends Controller
     public function sejarah()
     {
         return view('home.profil.sejarah', [
-            'title' => 'Sejarah Kota Sungai Penuh',
+            'profil' => Profil::first(),
+            'title' => Profil::first() ? 'Sejarah '.Profil::first()->nama : 'Sejarah Instansi',
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
             'berita' => Berita::beritalimit(3)
         ]);
     }
 
-    public function pendidikan()
+    public function visimisi()
     {
-        return view('home.profil.pendidikan', [
-            'title' => 'Pusat Pendidikan Kota Sungai Penuh',
+        return view('home.profil.visimisi', [
+            'profil' => Profil::first(),
+            'title' => Profil::first() ? 'Visi & Misi '.Profil::first()->nama : 'Visi & Misi Instansi',
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
-            'pendidikan' => DashboardProfil::allpendidikan(),
             'berita' => Berita::beritalimit(3)
         ]);
     }
 
-    public function kesehatan()
+    public function struktur()
     {
-        return view('home.profil.kesehatan', [
-            'title' => 'Pusat Kesehatan Kota Sungai Penuh',
+        return view('home.profil.struktur', [
+            'profil' => Profil::first(),
+            'title' => Profil::first() ? 'Visi & Misi '.Profil::first()->nama : 'Visi & Misi Instansi',
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
-            'kesehatan' => DashboardProfil::allkesehatan(),
             'berita' => Berita::beritalimit(3)
-        ]);
-    }
-
-    public function keuangan()
-    {
-        return view('home.profil.keuangan', [
-            'title' => 'Pusat Keuangan Kota Sungai Penuh',
-            'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
-            'agenda' => Agenda::agendalimit('3'),
-            'keuangan' => DashboardProfil::allkeuangan(),
-            'berita' => Berita::beritalimit(3)
-        ]);
-    }
-
-    public function perbelanjaan()
-    {
-        return view('home.profil.perbelanjaan', [
-            'title' => 'Pusat Perbelanjaan Kota Sungai Penuh',
-            'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
-            'agenda' => Agenda::agendalimit('3'),
-            'perbelanjaan' => DashboardProfil::allperbelanjaan(),
-            'berita' => Berita::beritalimit(3)
-        ]);
-    }
-
-    public function hotel()
-    {
-        return view('home.profil.hotel', [
-            'title' => 'Pusat Hotel Kota Sungai Penuh',
-            'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
-            'agenda' => Agenda::agendalimit('3'),
-            'hotel' => DashboardProfil::allhotel(),
-            'berita' => Berita::beritalimit(3)
-        ]);
-    }
-
-    public function wisata()
-    {
-        return view('home.profil.wisata', [
-            'title' => 'Wisata Kota Sungai Penuh',
-            'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
-            'agenda' => Agenda::agendalimit('3'),
-            'berita' => Berita::beritalimit(3),
-            'wisata' => Wisata::all()
         ]);
     }
 
     public function foto()
     {
         return view('home.galeri.foto', [
-            'title' => 'Galeri Foto Kota Sungai Penuh',
+            'profil' => Profil::first(),
+            'title' => Profil::first() ? 'Galeri Foto '.Profil::first()->nama : 'Galeri Foto Instansi',
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
             'berita' => Berita::beritalimit(3),
@@ -152,31 +106,11 @@ class HomeController extends Controller
         ]);
     }
 
-    public function video()
-    {
-        return view('home.galeri.video', [
-            'title' => 'Galeri Video Kota Sungai Penuh',
-            'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
-            'agenda' => Agenda::agendalimit('3'),
-            'berita' => Berita::beritalimit(3)
-        ]);
-    }
-
-    public function penghargaan()
-    {
-        return view('home.galeri.penghargaan', [
-            'title' => 'Penghargaan Kota Sungai Penuh',
-            'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
-            'agenda' => Agenda::agendalimit('3'),
-            'berita' => Berita::beritalimit(3),
-            'penghargaan' => Penghargaan::all()
-        ]);
-    }
-
     public function anggaran()
     {
         return view('home.publikasi.anggaran', [
-            'title' => 'Transparansi Anggaran Kota Sungai Penuh',
+            'profil' => Profil::first(),
+            'title' => Profil::first() ? 'Transparansi Anggaran '.Profil::first()->nama : 'Transparansi Anggaran Instansi',
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
             'berita' => Berita::beritalimit(3),
@@ -187,7 +121,8 @@ class HomeController extends Controller
     public function dokumen()
     {
         return view('home.publikasi.dokumen', [
-            'title' => 'Publikasi Dokumen Kota Sungai Penuh',
+            'profil' => Profil::first(),
+            'title' => Profil::first() ? 'Publikasi Dokumen '.Profil::first()->nama : 'Publikasi Dokumen Instansi',
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
             'berita' => Berita::beritalimit(3),
@@ -198,7 +133,8 @@ class HomeController extends Controller
     public function pengumuman()
     {
         return view('home.publikasi.pengumuman', [
-            'title' => 'Pengumuman Kota Sungai Penuh',
+            'profil' => Profil::first(),
+            'title' => Profil::first() ? 'Pengumuman '.Profil::first()->nama : 'Pengumuman Instansi',
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
             'berita' => Berita::beritalimit(3),
@@ -206,67 +142,40 @@ class HomeController extends Controller
         ]);
     }
 
-    public function skpd()
+    public function penghargaan()
     {
-        return view('home.situs.skpd', [
-            'title' => 'Website SKPD Kota Sungai Penuh',
+        return view('home.publikasi.penghargaan', [
+            'profil' => Profil::first(),
+            'title' => Profil::first() ? 'Penghargaan '.Profil::first()->nama : 'Penghargaan Instansi',
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
             'berita' => Berita::beritalimit(3),
-            'skpd' => DomainSKPD::allHome()
+            'penghargaan' => Penghargaan::all()
         ]);
     }
 
-    public function desa()
+    public function pelayanan()
     {
-        return view('home.situs.desa', [
-            'title' => 'Website Desa Kota Sungai Penuh',
+        return view('home.pelayanan', [
+            'profil' => Profil::first(),
+            'title' => Profil::first() ? 'Standar Pelayanan '.Profil::first()->nama : 'Standar Pelayanan Instansi',
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
             'berita' => Berita::beritalimit(3),
-            'desa' => DomainDesa::allHome()
+            'pelayanan' => Pelayanan::all()
         ]);
     }
 
-    public function pemerintahan()
+    public function detail($id)
     {
-        return view('home.menu-utama.pemerintahan', [
-            'title' => 'Pemerintahan'
+        return view('home.detail', [
+            'profil' => Profil::first(),
+            'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
+            'agenda' => Agenda::agendalimit('3'),
+            'berita' => Berita::beritalimit(3),
+            'pelayanan' => Pelayanan::where('id', $id)->first(),
+            'title' => Pelayanan::where('id', $id)->first()->jenis
         ]);
     }
 
-    public function layananpublik()
-    {
-        return view('home.menu-utama.layananpublik', [
-            'title' => 'Layanan Publik'
-        ]);
-    }
-
-    public function layananpegawai()
-    {
-        return view('home.menu-utama.layananpegawai', [
-            'title' => 'Layanan Pegawai'
-        ]);
-    }
-
-    public function lpse()
-    {
-        return view('home.menu-utama.lpse', [
-            'title' => 'Layanan Pengadaan Secara Elektronik'
-        ]);
-    }
-
-    public function perencanaan()
-    {
-        return view('home.menu-utama.perencanaan', [
-            'title' => 'Perencanaan Pembangunan dan Evaluasi'
-        ]);
-    }
-
-    public function kotaku()
-    {
-        return view('home.menu-utama.kotaku', [
-            'title' => 'Program Kota Tanpa Kumuh'
-        ]);
-    }
 }

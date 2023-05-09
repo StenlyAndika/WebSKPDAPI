@@ -7,33 +7,24 @@
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header">
-						<h1 class="mt-3">Form Berita</h1>
+						<h1 class="mt-3">Form Standar Pelayanan</h1>
 					</div>
 					<div class="card-body card-block">            
-                        <form method="post" action="{{ route('admin.berita.update', $berita->slug) }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('admin.pelayanan.update', $pelayanan->id) }}" enctype="multipart/form-data">
                             @method('put')
                             @csrf
                             <div class="form-floating mb-1">
-                                <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" name="judul" placeholder="Judul" value="{{ $berita->judul }}">
-                                <label for="judul">Judul</label>
-                                @error('judul')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-floating mb-1">
-                                <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" placeholder="Slug" value="{{ $berita->slug }}" readonly>
-                                <label for="slug">Slug</label>
-                                @error('slug')
+                                <input type="text" class="form-control @error('jenis') is-invalid @enderror" id="jenis" name="jenis" placeholder="Jenis" value="{{ $pelayanan->jenis }}">
+                                <label for="jenis">Jenis Layanan</label>
+                                @error('jenis')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="form-group mb-1">
-                                <input type="hidden" id="isi" name="isi" value="{{ $berita->isi }}">
-                                <trix-editor input="isi"></trix-editor>
+                                <input type="hidden" id="standar" name="standar" value="{{ $pelayanan->standar }}">
+                                <trix-editor input="standar"></trix-editor>
                             </div>
                             <div class="form-group mb-1">
                                 <input type="file" id="gambar" class="form-control @error('gambar') is-invalid @enderror" name="gambar" onchange="previewImage()">
@@ -42,16 +33,16 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                                <input type="hidden" name="oldImage" value="{{ $berita->gambar }}">
-                                @if ($berita->gambar)
-                                    <img class="img-preview img-fluid col-lg-8 mt-2" src="{{ asset('storage/'.$berita->gambar) }}">
+                                <input type="hidden" name="oldImage" value="{{ $pelayanan->gambar }}">
+                                @if ($pelayanan->gambar)
+                                    <img class="img-preview img-fluid col-lg-8 mt-2" src="{{ asset('storage/'.$pelayanan->gambar) }}">
                                 @else
                                     <img class="img-preview img-fluid col-lg-8 mt-2">
                                 @endif
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a class="btn btn-sm btn-success" href="{{ route('admin.berita.index') }}">Kembali</a>
+                                <a class="btn btn-sm btn-success" href="{{ route('admin.pelayanan.index') }}">Kembali</a>
                             </div>
                         </form>
                     </div>
@@ -62,15 +53,6 @@
 </div>
 
     <script>
-        const judul = document.querySelector('#judul');
-        const slugs = document.querySelector('#slug');
-        
-        judul.addEventListener('change', function(e) {
-            fetch('/admin/berita/checkSlug/' + judul.value)
-            .then(response => response.json())
-            .then(data => slugs.value = data.slug)
-        })
-
         function previewImage() {
             const image = document.querySelector('#gambar');
             const imagePreview = document.querySelector('.img-preview');

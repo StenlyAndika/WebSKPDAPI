@@ -28,7 +28,7 @@
     @include('partials.header')
     
     <div class="row custom-container">
-        @if (Request::is('/') || Request::is('menu-utama*') || Request::is('login'))
+        @if (Request::is('menu-utama*') || Request::is('login'))
             @yield('container')
         @else
             @include('partials.news')

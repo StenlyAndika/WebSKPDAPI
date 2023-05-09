@@ -7,11 +7,13 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardAgenda;
 use App\Http\Controllers\DashboardBerita;
+use App\Http\Controllers\DashboardProfil;
 use App\Http\Controllers\DashboardWisata;
 use App\Http\Controllers\DashboardDokumen;
 use App\Http\Controllers\DashboardService;
 use App\Http\Controllers\DashboardAnggaran;
 use App\Http\Controllers\DashboardKepuasan;
+use App\Http\Controllers\DashboardPelayanan;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardDomainDesa;
 use App\Http\Controllers\DashboardDomainSKPD;
@@ -33,34 +35,21 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::post('menu-utama/kontak', [HomeController::class, 'kontak'])->name('kontak');
 
-Route::get('/menu-utama/pemerintahan', [HomeController::class, 'pemerintahan'])->name('pemerintahan');
-Route::get('/menu-utama/layanan-publik', [HomeController::class, 'layananpublik'])->name('layananpublik');
-Route::get('/menu-utama/layanan-pegawai', [HomeController::class, 'layananpegawai'])->name('layananpegawai');
-Route::get('/menu-utama/lpse', [HomeController::class, 'lpse'])->name('lpse');
-Route::get('/menu-utama/perencanaan-pembangunan', [HomeController::class, 'perencanaan'])->name('perencanaan');
-Route::get('/menu-utama/kotaku', [HomeController::class, 'kotaku'])->name('kotaku');
-
-Route::get('/berita', [HomeController::class, 'berita'])->name('berita');
 Route::get('/berita/read/{slug}', [HomeController::class, 'read'])->name('berita.read');
 
 Route::get('/profil/sejarah', [HomeController::class, 'sejarah'])->name('sejarah');
-Route::get('/profil/pendidikan', [HomeController::class, 'pendidikan'])->name('pendidikan');
-Route::get('/profil/kesehatan', [HomeController::class, 'kesehatan'])->name('kesehatan');
-Route::get('/profil/keuangan', [HomeController::class, 'keuangan'])->name('keuangan');
-Route::get('/profil/pusat-perbelanjaan', [HomeController::class, 'perbelanjaan'])->name('perbelanjaan');
-Route::get('/profil/hotel', [HomeController::class, 'hotel'])->name('hotel');
-Route::get('/profil/wisata', [HomeController::class, 'wisata'])->name('wisata');
+Route::get('/profil/visimisi', [HomeController::class, 'visimisi'])->name('visimisi');
+Route::get('/profil/struktur', [HomeController::class, 'struktur'])->name('struktur');
+
+Route::get('/pelayanan/index', [HomeController::class, 'pelayanan'])->name('pelayanan');
+Route::get('/pelayanan/detail/{id}', [HomeController::class, 'detail'])->name('detail');
 
 Route::get('/galeri/foto', [HomeController::class, 'foto'])->name('foto');
-Route::get('/galeri/video', [HomeController::class, 'video'])->name('video');
 Route::get('/galeri/penghargaan', [HomeController::class, 'penghargaan'])->name('penghargaan');
 
 Route::get('/publikasi/anggaran', [HomeController::class, 'anggaran'])->name('anggaran');
 Route::get('/publikasi/dokumen', [HomeController::class, 'dokumen'])->name('dokumen');
 Route::get('/publikasi/pengumuman', [HomeController::class, 'pengumuman'])->name('pengumuman');
-
-Route::get('/situs/skpd', [HomeController::class, 'skpd'])->name('skpd');
-Route::get('/situs/desa', [HomeController::class, 'desa'])->name('desa');
 
 Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('auth');
@@ -110,6 +99,14 @@ Route::middleware(['admin'])->group(function () {
     Route::put('/admin/foto/{foto}', [DashboardFoto::class, 'update'])->name('admin.foto.update');
     Route::delete('/admin/foto/{foto}', [DashboardFoto::class, 'destroy'])->name('admin.foto.destroy');
 
+    Route::get('/admin/pelayanan', [DashboardPelayanan::class, 'index'])->name('admin.pelayanan.index');
+    Route::get('/admin/pelayanan/{pelayanan}', [DashboardPelayanan::class, 'show'])->name('admin.pelayanan.show');
+    Route::get('/admin/pelayanan/create', [DashboardPelayanan::class, 'create'])->name('admin.pelayanan.create');
+    Route::post('/admin/pelayanan', [DashboardPelayanan::class, 'store'])->name('admin.pelayanan.store');
+    Route::get('/admin/pelayanan/{pelayanan}/edit', [DashboardPelayanan::class, 'edit'])->name('admin.pelayanan.edit');
+    Route::put('/admin/pelayanan/{pelayanan}', [DashboardPelayanan::class, 'update'])->name('admin.pelayanan.update');
+    Route::delete('/admin/pelayanan/{pelayanan}', [DashboardPelayanan::class, 'destroy'])->name('admin.pelayanan.destroy');
+
     Route::get('/admin/penghargaan', [DashboardPenghargaan::class, 'index'])->name('admin.penghargaan.index');
     Route::get('/admin/penghargaan/create', [DashboardPenghargaan::class, 'create'])->name('admin.penghargaan.create');
     Route::post('/admin/penghargaan', [DashboardPenghargaan::class, 'store'])->name('admin.penghargaan.store');
@@ -118,42 +115,12 @@ Route::middleware(['admin'])->group(function () {
     Route::delete('/admin/penghargaan/{penghargaan}', [DashboardPenghargaan::class, 'destroy'])->name('admin.penghargaan.destroy');
     Route::get('/admin/penghargaan/checkSlug/{keterangan}', [DashboardPenghargaan::class, 'checkSlug']);
 
-    Route::get('/admin/domain-skpd', [DashboardDomainSKPD::class, 'index'])->name('admin.domainskpd.index');
-    Route::get('/admin/domain-skpd/create', [DashboardDomainSKPD::class, 'create'])->name('admin.domainskpd.create');
-    Route::post('/admin/domain-skpd', [DashboardDomainSKPD::class, 'store'])->name('admin.domainskpd.store');
-    Route::get('/admin/domain-skpd/{domainskpd}/edit', [DashboardDomainSKPD::class, 'edit'])->name('admin.domainskpd.edit');
-    Route::put('/admin/domain-skpd/{domainskpd}', [DashboardDomainSKPD::class, 'update'])->name('admin.domainskpd.update');
-    Route::patch('/admin/domain-skpd/{domainskpd}', [DashboardDomainSKPD::class, 'status'])->name('admin.domainskpd.status');
-    Route::delete('/admin/domain-skpd/{domainskpd}', [DashboardDomainSKPD::class, 'destroy'])->name('admin.domainskpd.destroy');
-    
-    Route::get('/admin/domain-desa', [DashboardDomainDesa::class, 'index'])->name('admin.domaindesa.index');
-    Route::get('/admin/domain-desa/create', [DashboardDomainDesa::class, 'create'])->name('admin.domaindesa.create');
-    Route::post('/admin/domain-desa', [DashboardDomainDesa::class, 'store'])->name('admin.domaindesa.store');
-    Route::get('/admin/domain-desa/{domaindesa}/edit', [DashboardDomainDesa::class, 'edit'])->name('admin.domaindesa.edit');
-    Route::put('/admin/domain-desa/{domaindesa}', [DashboardDomainDesa::class, 'update'])->name('admin.domaindesa.update');
-    Route::patch('/admin/domain-desa/{domaindesa}', [DashboardDomainDesa::class, 'status'])->name('admin.domaindesa.status');
-    Route::delete('/admin/domain-desa/{domaindesa}', [DashboardDomainDesa::class, 'destroy'])->name('admin.domaindesa.destroy');
-
-    Route::get('/admin/wisata', [DashboardWisata::class, 'index'])->name('admin.wisata.index');
-    Route::get('/admin/wisata/create', [DashboardWisata::class, 'create'])->name('admin.wisata.create');
-    Route::post('/admin/wisata', [DashboardWisata::class, 'store'])->name('admin.wisata.store');
-    Route::get('/admin/wisata/{wisata}/edit', [DashboardWisata::class, 'edit'])->name('admin.wisata.edit');
-    Route::put('/admin/wisata/{wisata}', [DashboardWisata::class, 'update'])->name('admin.wisata.update');
-    Route::delete('/admin/wisata/{wisata}', [DashboardWisata::class, 'destroy'])->name('admin.wisata.destroy');
-
     Route::get('/admin/kepuasan', [DashboardKepuasan::class, 'index'])->name('admin.kepuasan.index');
     Route::get('/admin/kepuasan/create', [DashboardKepuasan::class, 'create'])->name('admin.kepuasan.create');
     Route::post('/admin/kepuasan', [DashboardKepuasan::class, 'store'])->name('admin.kepuasan.store');
     Route::get('/admin/kepuasan/{kepuasan}/edit', [DashboardKepuasan::class, 'edit'])->name('admin.kepuasan.edit');
     Route::put('/admin/kepuasan/{kepuasan}', [DashboardKepuasan::class, 'update'])->name('admin.kepuasan.update');
     Route::delete('/admin/kepuasan/{kepuasan}', [DashboardKepuasan::class, 'destroy'])->name('admin.kepuasan.destroy');
-
-    Route::get('/admin/service', [DashboardService::class, 'index'])->name('admin.service.index');
-    Route::get('/admin/service/create', [DashboardService::class, 'create'])->name('admin.service.create');
-    Route::post('/admin/service', [DashboardService::class, 'store'])->name('admin.service.store');
-    Route::get('/admin/service/{service}/edit', [DashboardService::class, 'edit'])->name('admin.service.edit');
-    Route::put('/admin/service/{service}', [DashboardService::class, 'update'])->name('admin.service.update');
-    Route::delete('/admin/service/{service}', [DashboardService::class, 'destroy'])->name('admin.service.destroy');
 
     Route::get('/admin/agenda', [DashboardAgenda::class, 'index'])->name('admin.agenda.index');
     Route::get('/admin/agenda/create', [DashboardAgenda::class, 'create'])->name('admin.agenda.create');
@@ -162,14 +129,22 @@ Route::middleware(['admin'])->group(function () {
     Route::put('/admin/agenda/{agenda}', [DashboardAgenda::class, 'update'])->name('admin.agenda.update');
     Route::delete('/admin/agenda/{agenda}', [DashboardAgenda::class, 'destroy'])->name('admin.agenda.destroy');
 
+    Route::get('/admin/profil', [DashboardProfil::class, 'index'])->name('admin.profil.index');
+    Route::get('/admin/profil/create', [DashboardProfil::class, 'create'])->name('admin.profil.create');
+    Route::post('/admin/profil', [DashboardProfil::class, 'store'])->name('admin.profil.store');
+    Route::put('/admin/profil/{profil}', [DashboardProfil::class, 'update'])->name('admin.profil.update');
+    Route::delete('/admin/profil/{profil}', [DashboardProfil::class, 'destroy'])->name('admin.profil.destroy');
+
+    Route::get('/admin/user', [DashboardUser::class, 'index'])->name('admin.user.index');
+    Route::get('/admin/user/create', [DashboardUser::class, 'create'])->name('admin.user.create');
+    Route::post('/admin/user', [DashboardUser::class, 'store'])->name('admin.user.store');
+    Route::get('/admin/user/{user}/show', [DashboardUser::class, 'show'])->name('admin.user.show');
+    Route::get('/admin/user/{user}/edit', [DashboardUser::class, 'edit'])->name('admin.user.edit');
+    Route::put('/admin/user/{user}', [DashboardUser::class, 'update'])->name('admin.user.update');
     Route::middleware(['root'])->group(function () {
-        Route::get('/admin/user', [DashboardUser::class, 'index'])->name('admin.user.index');
-        Route::get('/admin/user/create', [DashboardUser::class, 'create'])->name('admin.user.create');
-        Route::post('/admin/user', [DashboardUser::class, 'store'])->name('admin.user.store');
-        Route::get('/admin/user/{user}/edit', [DashboardUser::class, 'edit'])->name('admin.user.edit');
-        Route::put('/admin/user/{user}', [DashboardUser::class, 'update'])->name('admin.user.update');
+        Route::put('/admin/user/{user}/updateroot', [DashboardUser::class, 'updateroot'])->name('admin.user.updateroot');
         Route::patch('/admin/user/{user}/set-admin', [DashboardUser::class, 'set_admin'])->name('admin.user.set_admin');
         Route::patch('/admin/user/{user}/set-root', [DashboardUser::class, 'set_root'])->name('admin.user.set_root');
-        Route::delete('/admin/user/{user}', [DashboardUser::class, 'destroy'])->name('admin.user.destroy');
     });
+    Route::delete('/admin/user/{user}', [DashboardUser::class, 'destroy'])->name('admin.user.destroy');
 });

@@ -1,23 +1,12 @@
 <section class="col-md-3 section right-panel">
     <div class="card shadow mb-4 text-center">
-        <div class="panel-carousel owl-carousel owl-theme">
-            <div class="item">
-                <div class="card-header">
-                    <h6 class="m-0 fw-bold">WALIKOTA<br>KOTA SUNGAI PENUH</h6>
-                </div>
-                <div class="card-body">
-                    <div  class="img-fluid img-responsive center-block"><img style="object-fit: cover; width: 100%; height: 400px;" src="/img/wako.webp"></div>
-                    <h5 style="font-size: 18px !important;" class="fw-bold m-0 mt-3 ">Drs. AHMADI ZUBIR, MM</h5>
-                </div>
+        <div class="item">
+            <div class="card-header">
+                <h6 class="m-0 fw-bold">KEPALA INSTANSI</h6>
             </div>
-            <div class="item">
-                <div class="card-header">
-                    <h6 class="m-0 fw-bold">WAKIL WALIKOTA<br>KOTA SUNGAI PENUH</h6>
-                </div>
-                <div class="card-body">
-                    <div  class="img-fluid img-responsive center-block"><img style="object-fit: cover; width: 100%; height: 400px;" src="/img/wawako.webp"></div>
-                    <h5 style="font-size: 18px !important;" class="fw-bold m-0 mt-3">Dr. ALVIA SANTONI, SE, MM</h5>
-                </div>
+            <div class="card-body">
+                <div  class="img-fluid img-responsive center-block"><img style="object-fit: cover; width: 100%; height: 400px;" src="{{ asset('storage/'.$profil->fotokepala) }}"></div>
+                <h5 style="font-size: 18px !important;" class="fw-bold m-0 mt-3 ">{{ $profil->kepala }}</h5>
             </div>
         </div>
     </div>

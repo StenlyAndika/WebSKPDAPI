@@ -5,7 +5,7 @@
         <div class="card shadow">
             <div class="card-body">
                 <div class="container">
-                    <h2 class="fw-bold mb-4" style="text-align: center;">Galeri Foto<br>Kota Sungai Penuh</h2>
+                    <h2 class="fw-bold mb-4" style="text-align: center;">Galeri Foto<br>{{ $profil->nama }}</h2>
                     <?php
                         $tmpkegiatan = [];
                         $a = "";

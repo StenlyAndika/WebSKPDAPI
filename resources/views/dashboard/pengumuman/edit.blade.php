@@ -56,14 +56,10 @@
         const judul = document.querySelector('#judul');
         const slugs = document.querySelector('#slug');
         
-        let timer, timeoutVal = 500;
-        judul.addEventListener('keyup', function(e) {
-            window.clearTimeout(timer);
-            timer = window.setTimeout(() => {
-                fetch('/admin/pengumuman/checkSlug/' + judul.value)
-                .then(response => response.json())
-                .then(data => slugs.value = data.slug)
-            }, timeoutVal);
+        judul.addEventListener('change', function(e) {
+            fetch('/admin/pengumuman/checkSlug/' + judul.value)
+            .then(response => response.json())
+            .then(data => slugs.value = data.slug)
         })
 
     </script>

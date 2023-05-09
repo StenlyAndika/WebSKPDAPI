@@ -6,7 +6,7 @@
                 <div class="col-lg-3 col-md-6 footer-info">
                     <a aria-label="home" href="/"><img src="/img/tablogo.webp" alt="" class="img-fluid" width="150px"></a>
                     <p>
-                        Website resmi pemerintah kota sungai penuh.<br>
+                        Website resmi {{ $profil->nama }}.<br>
                         Menyediakan seputar informasi dalam pemerintahan kota sungai penuh.
                     </p>
                 </div>
@@ -14,24 +14,21 @@
                 <div class="col-lg-2 col-md-6 footer-links">
                     <h4>Link Terkait</h4>
                     <ul>
-                        <li><a href="http://lpse.sungaipenuhkota.go.id">LPSE Kota Sungai Penuh</a></li>
+                        <li><a href="http://sungaipenuhkota.go.id">Website Kota Sungai Penuh</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-contact">
                     <h4>Tentang Kami</h4>
                     <p>
-                        Jl. Gajah Mada No. 01<br>
-                        Kota Sungai Penuh, Indonesia<br>
-                        Telpon (0748) 323969<br>
-                        Fax (0748) 324511<br>
+                        {{ $profil->alamat }}
                     </p>
 
                     <div class="social-links">
-                        <a aria-label="mail" href="https://mail.google.com/mail/?view=cm&fs=1&to=diskominfo.sungaipenuhkota@gmail.com" target="_blank" class="email"><i class="bi bi-envelope-fill"></i></a>
-                        <a aria-label="facebook" href="https://www.facebook.com/" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
-                        <a aria-label="twitter" href="https://twitter.com/" target="_blank" class="twitter"><i class="bi bi-twitter"></i></a>
-                        <a aria-label="instagram" href="https://instagram.com/" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
+                        <a aria-label="mail" href="https://mail.google.com/mail/?view=cm&fs=1&to={{ $profil->email }}" target="_blank" class="email"><i class="bi bi-envelope-fill"></i></a>
+                        <a aria-label="facebook" href="https://www.facebook.com/{{ $profil->fb }}" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
+                        <a aria-label="twitter" href="https://twitter.com/{{ $profil->tw }}" target="_blank" class="twitter"><i class="bi bi-twitter"></i></a>
+                        <a aria-label="instagram" href="https://instagram.com/{{ $profil->ig }}" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
                     </div>
                 </div>
 
@@ -65,7 +62,6 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                        <div class="g-recaptcha mb-1" data-sitekey="6LdcY9QlAAAAALm2miIX0_yMBEiXSKuEdqhD5a-B"></div>
                         <button class="btn btn-md btn-light text-danger fw-bold">Kirim Pesan</button>
                     </form>
                 </div>

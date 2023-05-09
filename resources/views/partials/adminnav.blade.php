@@ -14,6 +14,9 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
+                            <a class="dropdown-item" href="{{ route('admin.user.show', auth()->user()->id) }}">Profil</a>
+                        </li>
+                        <li>
                             <form action="{{ route('logout') }}" method="post">
                                 @csrf
                                 <button type="submit" class="dropdown-item">Logout</button>
@@ -50,7 +53,7 @@
         <li class="list {{ Request::is('admin/anggaran*') ? 'active' : '' }}">
             <a href="{{ route('admin.anggaran.index') }}">
                 <span class="icon"><i class="bi bi-card-checklist"></i></span>
-                <span class="title">Transparansi</span>
+                <span class="title">Transparansi Anggaran</span>
             </a>
         </li>
         <li class="list {{ Request::is('admin/dokumen*') ? 'active' : '' }}">
@@ -65,34 +68,22 @@
                 <span class="title">Foto</span>
             </a>
         </li>
+        <li class="list {{ Request::is('admin/pelayanan*') ? 'active' : '' }}">
+            <a href="{{ route('admin.pelayanan.index') }}">
+                <span class="icon"><i class="bi bi-card-checklist"></i></span>
+                <span class="title">Standar Pelayanan</span>
+            </a>
+        </li>
         <li class="list {{ Request::is('admin/penghargaan*') ? 'active' : '' }}">
             <a href="{{ route('admin.penghargaan.index') }}">
                 <span class="icon"><i class="bi bi-hand-thumbs-up"></i></span>
                 <span class="title">Penghargaan</span>
             </a>
         </li>
-        <li class="list {{ Request::is('admin/domain-skpd*') ? 'active' : '' }}">
-            <a href="{{ route('admin.domainskpd.index') }}">
-                <span class="icon"><i class="bi bi-link"></i></span>
-                <span class="title">Domain SKPD</span>
-            </a>
-        </li>
-        <li class="list {{ Request::is('admin/domain-desa*') ? 'active' : '' }}">
-            <a href="{{ route('admin.domaindesa.index') }}">
-                <span class="icon"><i class="bi bi-link"></i></span>
-                <span class="title">Domain Desa</span>
-            </a>
-        </li>
         <li class="list {{ Request::is('admin/agenda*') ? 'active' : '' }}">
             <a href="{{ route('admin.agenda.index') }}">
                 <span class="icon"><i class="bi bi-calendar"></i></span>
-                <span class="title">Agenda Kota</span>
-            </a>
-        </li>
-        <li class="list {{ Request::is('admin/wisata*') ? 'active' : '' }}">
-            <a href="{{ route('admin.wisata.index') }}">
-                <span class="icon"><i class="bi bi-map"></i></span>
-                <span class="title">Destinasi Wisata</span>
+                <span class="title">Agenda Kegiatan</span>
             </a>
         </li>
         <li class="list {{ Request::is('admin/kepuasan*') ? 'active' : '' }}">
@@ -101,20 +92,18 @@
                 <span class="title">Index Kepuasan (IKM)</span>
             </a>
         </li>
-        @can('root')
-            <li class="list {{ Request::is('admin/service*') ? 'active' : '' }}">
-                <a href="{{ route('admin.service.index') }}">
-                    <span class="icon"><i class="bi bi-building-gear"></i></span>
-                    <span class="title">Smart Services</span>
-                </a>
-            </li>
-            <li class="list {{ Request::is('admin/user*') ? 'active' : '' }}">
-                <a href="{{ route('admin.user.index') }}">
-                    <span class="icon"><i class="bi bi-person-circle"></i></span>
-                    <span class="title">Data User</span>
-                </a>
-            </li>
-        @endcan
+        <li class="list {{ Request::is('admin/profil*') ? 'active' : '' }}">
+            <a href="{{ route('admin.profil.index') }}">
+                <span class="icon"><i class="bi bi-database-fill-gear"></i></span>
+                <span class="title">Profil Instansi</span>
+            </a>
+        </li>
+        <li class="list {{ Request::is('admin/user*') ? 'active' : '' }}">
+            <a href="{{ route('admin.user.index') }}">
+                <span class="icon"><i class="bi bi-person-circle"></i></span>
+                <span class="title">Data User</span>
+            </a>
+        </li>
     </ul>
 </div>
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -65,7 +67,9 @@ class DashboardUser extends Controller
      */
     public function show(User $user)
     {
-        
+        return view('dashboard.user.profil', [
+            'title' => 'Profil Admin'
+        ], compact('user'));
     }
 
     /**
@@ -91,14 +95,43 @@ class DashboardUser extends Controller
     public function update(Request $request, User $user)
     {
         $rules = [
-            'username' => 'required|unique:user',
             'password' => 'required',
             'nama' => 'required'
         ];
 
+        if ($request->username != auth()->user()->username) {
+            $rules['username'] = 'required|unique:user';
+        }
+
         $validatedData = $request->validate($rules);
+
+        if($validatedData['password'] != auth()->user()->password) {
+            $validatedData['password'] = bcrypt($validatedData['password']);
+        }
         
-        User::where('tahun', $user->tahun)->update($validatedData);
+        User::where('id', $user->id)->update($validatedData);
+
+        return redirect()->route('admin.user.index')->with('success', 'Data berhasil diupdate!');
+    }
+
+    public function updateroot(Request $request, User $user)
+    {
+        $rules = [
+            'password' => 'required',
+            'nama' => 'required'
+        ];
+
+        if ($request->username != $user->username) {
+            $rules['username'] = 'required|unique:user';
+        }
+
+        $validatedData = $request->validate($rules);
+
+        if($validatedData['password'] != $user->password) {
+            $validatedData['password'] = bcrypt($validatedData['password']);
+        }
+        
+        User::where('id', $user->id)->update($validatedData);
 
         return redirect()->route('admin.user.index')->with('success', 'Data berhasil diupdate!');
     }
@@ -143,9 +176,16 @@ class DashboardUser extends Controller
      * @param  \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(User $user, Request $request)
     {
-        User::destroy($user->tahun);
-        return redirect()->route('admin.user.index')->with('success','Data berhasil dihapus!');
+        User::destroy($user->id);
+        if(auth()->user()->username == $user->username) {
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect()->route('home')->with('success','Data berhasil dihapus!');
+        } else {
+            return redirect()->route('admin.user.index')->with('success','Data berhasil dihapus!');
+        }
     }
 }

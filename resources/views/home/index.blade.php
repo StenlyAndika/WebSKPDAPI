@@ -1,100 +1,95 @@
 @extends('layout.main')
 
 @section('container')
-    <section class="col-lg-12 section gradient-banner" id="menu">
-        <div class="shapes-container">
-            <div class="shape" data-aos="fade-down-left" data-aos-duration="1500" data-aos-delay="100"></div>
-            <div class="shape" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100"></div>
-            <div class="shape" data-aos="fade-up-right" data-aos-duration="1000" data-aos-delay="200"></div>
-            <div class="shape" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"></div>
-            <div class="shape" data-aos="fade-down-left" data-aos-duration="1000" data-aos-delay="100"></div>
-            <div class="shape" data-aos="fade-down-left" data-aos-duration="1000" data-aos-delay="100"></div>
-            <div class="shape" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300"></div>
-            <div class="shape" data-aos="fade-down-right" data-aos-duration="500" data-aos-delay="200"></div>
-            <div class="shape" data-aos="fade-down-right" data-aos-duration="500" data-aos-delay="100"></div>
-            <div class="shape" data-aos="zoom-out" data-aos-duration="2000" data-aos-delay="500"></div>
-            <div class="shape" data-aos="fade-up-right" data-aos-duration="500" data-aos-delay="200"></div>
-            <div class="shape" data-aos="fade-down-left" data-aos-duration="500" data-aos-delay="100"></div>
-            <div class="shape" data-aos="fade-up" data-aos-duration="500" data-aos-delay="0"></div>
-            <div class="shape" data-aos="fade-down" data-aos-duration="500" data-aos-delay="0"></div>
-            <div class="shape" data-aos="fade-up-right" data-aos-duration="500" data-aos-delay="100"></div>
-            <div class="shape" data-aos="fade-down-left" data-aos-duration="500" data-aos-delay="0"></div>
-        </div>
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 order-1 order-md-2 text-left text-md-left" data-aos="fade-left" data-aos-duration="700">
-                    <h2 class="text-white fw-bold mb-4">Website Resmi Pemerintah Kota Sungai Penuh</h2>
-                    <h3 class="text-white fw-bold mb-1">sungaipenuhkota<span style="color: #2fb8f2;">.go.id</span></h3>
-                    <h2 class="cd-headline clip is-full-width mb-4">
-                        <span class="cd-words-wrapper text-color">
-                            <b class="is-visible fw-bold">Sahalun Suhak</b>
-                            <b class="fw-bold">Saletuh Bedil</b>
-                        </span>
-                    </h2>
+    <section class="col-md-9 section mb-2">
+        <div class="card shadow">
+            <div class="container">
+                <div class="card-body row align-items-center">
+                    <div class="col-md-10 order-1 order-md-1 text-md-left" data-aos="fade-left" data-aos-duration="500">
+                        <h1 class="fw-bold" style="color: #000;">Website Resmi</h1>
+                        <h1 class="fw-bold" style="color: #2e7eed;">Pemerintah Kota Sungai Penuh</h1>
+                    </div>
                 </div>
-                <div class="col-md-6 text-center order-2 order-md-1" data-aos="fade-right" data-aos-duration="700">
-                    <img class="img-fluid" src="/img/bg-pemerintahan.webp" alt="screenshot">
+                <div class="container">
+                    <div class="news-carousel owl-carousel owl-theme">
+                        @foreach ($berita as $row)
+                            <article class="post-sm">
+                                <div class="post-thumb rounded">
+                                    <a href="{{ route('berita.read', $row->slug) }}">
+                                        <div class="card-animated">
+                                            <img class="image-fluid rounded w-100" src="{{ asset('storage/'.$row->gambar) }}" alt="Post-Image">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="post-title">
+                                    <h4 class=""><a href="{{ route('berita.read', $row->slug) }}" class="fw-bold">{{ $row->judul }}</a></h4>
+                                </div>
+                                <div class="post-meta">
+                                    <ul class="list-inline post-tag">
+                                        <li class="list-inline-item">
+                                            <a href="#" style="color: #3A5BA0; font-weight: bold;">{{ $row->nama }}</a>
+                                        </li>
+                                        <li class="list-inline-item" style="color: red; font-size: 14px;">
+                                            <i class="bi bi-calendar"></i>
+                                            {{ Carbon\Carbon::parse($row->created_at)->isoFormat('D MMMM Y') }}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="post-details">
+                                    <p style="font-size: 14px">
+                                        <?php
+                                            $string = strip_tags($row->isi);
+                                            if (strlen($string) > 200) {
+                                                // truncate string
+                                                $stringCut = substr($string, 0, 200);
+                                                $endPoint = strrpos($stringCut, ' ');
+                                                //if the string doesn't contain any space then it will cut without word basis.
+                                                $string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                                                $string .= '...';
+                                            }
+                                            echo $string;
+                                        ?>
+                                    </p>
+                                </div>
+                            </article>
+                        @endforeach
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <section class="col-lg-12 section pt-0 mb-4 position-relative pull-top" data-aos="fade-up" data-aos-duration="700">
-        <div class="container">
-            <div class="rounded shadow bg-white">
-                <div class="card-group">
-                    <div class="card border-0">
-                        <a href="{{ route('pemerintahan') }}">
-                            <div class="card-body">
-                                <div class="card-animated">
-                                    <img src="/img/pemerintahan.webp" class="w-100" alt="image-icon">
-                                </div>
+                <hr>
+                <div class="container">
+                    @foreach ($berita as $row)
+                    <div class="card news-card mb-4 d-block d-sm-flex flex-row" data-aos="fade-up" data-aos-duration="500">
+                        <img src="{{ asset('storage/'.$row->gambar) }}" class="card-img-top rounded p-2" alt="...">
+                        <div class="card-body">
+                            <div class="post-title">
+                                <h4 class="" style="text-align: left;"><a href="{{ route('berita.read', $row->slug) }}" class="fw-bold">{{ $row->judul }}</a></h4>
                             </div>
-                        </a>
+                            <li class="list-inline-item">
+                                <a href="#" style="color: #3A5BA0; font-weight: bold;">{{ $row->nama }}</a>
+                            </li>
+                            <li class="list-inline-item" style="color: red; font-size: 14px;">
+                                <i class="bi bi-calendar"></i>
+                                {{ Carbon\Carbon::parse($row->created_at)->isoFormat('D MMMM Y') }}
+                            </li>
+                            <p class="card-text berita-mini" style="text-align: left;">
+                                <?php
+                                    $string = strip_tags($row->isi);
+                                    if (strlen($string) > 300) {
+                                        $stringCut = substr($string, 0, 300);
+                                        $endPoint = strrpos($stringCut, ' ');
+                                        $string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                                        $string .= '...';
+                                    }
+                                    echo $string;
+                                ?>
+                                <br>
+                                <a href="{{ route('berita.read', $row->slug) }}" class="fw-bold">Baca selengkapnya...</a>
+                            </p>
+                        </div>
                     </div>
-                    <div class="card border-0">
-                        <a href="{{ route('layananpublik') }}">
-                            <div class="card-body">
-                                <div class="card-animated">
-                                    <img src="/img/layananpublik.webp" class="w-100" alt="image-icon">
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card border-0">
-                        <a href="{{ route('layananpegawai') }}">
-                            <div class="card-body">
-                                <div class="card-animated">
-                                    <img src="/img/layananpegawai.webp" class="w-100" alt="image-icon">
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card border-0">
-                        <a href="{{ route('lpse') }}">
-                            <div class="card-body">
-                                <div class="card-animated">
-                                    <img src="/img/lpse.webp" class="w-100" alt="image-icon">
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card border-0">
-                        <a href="{{ route('perencanaan') }}">
-                            <div class="card-body">
-                                <div class="card-animated">
-                                    <img src="/img/perencanaan.webp" class="w-100" alt="image-icon">
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card border-0">
-                        <a href="{{ route('kotaku') }}">
-                            <div class="card-body">
-                                <div class="card-animated">
-                                    <img src="/img/kotaku.webp" class="w-100" alt="image-icon">
-                                </div>
-                            </div>
-                        </a>
+                    <?php endforeach; ?>
+                    <div class="d-flex justify-content-center">
+                        {{ $berita->links() }}
                     </div>
                 </div>
             </div>

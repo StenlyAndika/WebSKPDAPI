@@ -10,7 +10,7 @@
 						<h1 class="mt-3">Form User</h1>
 					</div>
 					<div class="card-body card-block">            
-                        <form method="post" action="{{ route('admin.user.update', $user->tahun) }}">
+                        <form method="post" action="{{ route('admin.user.updateroot', $user->id) }}">
                             @method('put')
                             @csrf
                             <div class="form-floating mb-1">

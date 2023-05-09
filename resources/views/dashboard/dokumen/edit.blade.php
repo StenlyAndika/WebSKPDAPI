@@ -65,14 +65,10 @@
         const keterangan = document.querySelector('#keterangan');
         const slugs = document.querySelector('#slug');
         
-        let timer, timeoutVal = 500;
-        keterangan.addEventListener('keyup', function(e) {
-            window.clearTimeout(timer);
-            timer = window.setTimeout(() => {
-                fetch('/admin/dokumen/checkSlug/' + keterangan.value)
-                .then(response => response.json())
-                .then(data => slugs.value = data.slug)
-            }, timeoutVal);
+        keterangan.addEventListener('change', function(e) {
+            fetch('/admin/dokumen/checkSlug/' + keterangan.value)
+            .then(response => response.json())
+            .then(data => slugs.value = data.slug)
         })
 
     </script>
