@@ -6,7 +6,7 @@
                 <div class="col-lg-3 col-md-6 footer-info">
                     <a aria-label="home" href="/"><img src="@if ($profil) {{ asset('storage/'.$profil->logo) }} @else /img/tablogo.webp @endif" alt="" class="img-fluid" width="150px"></a>
                     <p>
-                        Website resmi @if ($profil) {{ $profil->nama }} @else Instansi @endif.<br>
+                        Website Resmi @if ($profil) {{ $profil->nama }} @else Instansi @endif.<br>
                         Menyediakan seputar informasi dalam pemerintahan kota sungai penuh.
                     </p>
                 </div>
@@ -74,7 +74,7 @@
             <a class="text-white" href="{{ route('login') }}">&copy;</a> Copyright <strong>Dinas Komunikasi Informatika & Statistik Kota Sungai Penuh</strong>. All Rights Reserved
         </div>
     <div class="credits">
-        Developed by <a href="https://github.com/stenlyandika" target="_blank">Tenaga Ahli Programmer 2022-2023</a>
+        Developed by <a href="https://stenlyandika.github.io/" target="_blank">Tenaga Ahli Programmer 2022-2023</a>
     </div>
 </footer>
 

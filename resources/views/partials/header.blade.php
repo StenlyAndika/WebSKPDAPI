@@ -51,13 +51,17 @@
                         @if ($profil == null)
                             <a aria-label="home" href="{{ route('home') }}"><img src="/img/logo.webp" alt="" class="img-fluid"></a>
                         @else
+                        <a aria-label="home" href="{{ route('home') }}">
                             <div style="width: 45px"><img src="/img/tablogo.webp" alt="logo" class="img-fluid"></div>
+                        </a>
                         @endif
                     </td>
                     <td>
                         @if ($profil != null)
+                        <a aria-label="home" href="{{ route('home') }}">
                             <h3 class="stroke-double" title="{{ $profil->nama }}" style="text-align: left;">{{ $profil->nama }}</h3>
                             <h5 class="acidsb" style="text-align: left;">Pemerintah Kota Sungai Penuh</h5>
+                        </a>
                         @endif
                     </td>
                 </tr>
