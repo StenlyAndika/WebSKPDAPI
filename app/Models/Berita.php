@@ -59,7 +59,8 @@ class Berita extends Model
 
     public function apiAllBerita() {
         $query = Berita::join('user', 'berita.nama', '=', 'user.username')
-            ->select('berita.*', 'user.nama');
+            ->crossJoin('profil')
+            ->select('berita.*', 'user.nama', 'profil.nama as kategori');
     
         if (request('search')) {
             $query->where('berita.judul', 'LIKE', '%' . request('search') . '%')->orWhere('user.nama', 'LIKE', '%' . request('search') . '%');
