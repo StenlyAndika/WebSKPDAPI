@@ -13,6 +13,6 @@ class User extends Authenticatable
     public $timestamps = false;
 
     public function alluser() {
-        return User::select('*')->where('username', "!=", 'stendika')->get();
+        return User::select('*')->where('username', "!=", 'diskominfo')->get();
     }
 }

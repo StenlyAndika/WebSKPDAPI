@@ -1,6 +1,7 @@
 @extends('layout.main')
 
 @section('container')
+{{-- {{Artisan::call('storage:link')}} --}}
     <section class="col-md-9 section mb-2">
         <div class="card shadow">
             <div class="container">

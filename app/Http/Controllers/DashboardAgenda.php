@@ -97,7 +97,7 @@ class DashboardAgenda extends Controller
 
         $validatedData = $request->validate($rules);
         
-        Agenda::where('tahun', $agenda->tahun)->update($validatedData);
+        Agenda::where('id', $agenda->id)->update($validatedData);
 
         return redirect()->route('admin.agenda.index')->with('success', 'Data berhasil diupdate!');
     }
@@ -110,7 +110,7 @@ class DashboardAgenda extends Controller
      */
     public function destroy(Agenda $agenda)
     {
-        Agenda::destroy($agenda->tahun);
+        Agenda::destroy($agenda->id);
         return redirect()->route('admin.agenda.index')->with('success','Data berhasil dihapus!');
     }
 }
