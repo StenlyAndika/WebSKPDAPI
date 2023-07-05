@@ -52,6 +52,7 @@ class DashboardProfil extends Controller
         ];
 
         $validatedData = $request->validate($rules);
+        $validatedData['nama'] = ucwords(strtolower($request->nama));
         $validatedData['alamat'] = $request->alamat;
         $validatedData['sejarah'] = $request->sejarah;
         $validatedData['visi'] = $request->visi;
@@ -121,6 +122,7 @@ class DashboardProfil extends Controller
         ];
 
         $validatedData = $request->validate($rules);
+        $validatedData['nama'] = ucwords(strtolower($request->nama));
         $validatedData['sejarah'] = $request->sejarah;
         $validatedData['visi'] = $request->visi;
         $validatedData['misi'] = $request->misi;

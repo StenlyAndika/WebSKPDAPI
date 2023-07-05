@@ -11,7 +11,7 @@
                 font-family: "Mistral", sans-serif;
                 font-weight: 500;
                 color: #ff0000;
-                font-size: 32px;
+                font-size: 22px;
                 position: relative;
                 top: 8px;
             }
@@ -95,9 +95,9 @@
                     </ul>
                 </li>
                 <li><a class="nav-link" href="#kontakkami">Kontak Kami</a></li>
-                @can('guest-only')
+                {{-- @can('guest-only')
                     <li><a class="nav-link" href="{{ route('login') }}">Masuk</a></li>
-                @endcan
+                @endcan --}}
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
