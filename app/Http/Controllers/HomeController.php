@@ -12,7 +12,9 @@ use App\Models\Wisata;
 use App\Models\Dokumen;
 use App\Models\Anggaran;
 use App\Models\Kepuasan;
+use App\Models\Informasi;
 use App\Models\Pelayanan;
+use App\Models\Pengaduan;
 use App\Models\DomainDesa;
 use App\Models\DomainSKPD;
 use App\Models\Pengumuman;
@@ -29,6 +31,7 @@ class HomeController extends Controller
             'profil' => Profil::first(),
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
+            'informasi' => Informasi::first(),
             'berita' => Berita::allberita()
         ]);
     }
@@ -57,6 +60,7 @@ class HomeController extends Controller
             'agenda' => Agenda::agendalimit('3'),
             'berita' => Berita::beritalimit(3),
             'singleberita' => Berita::singleberita($slug),
+            'informasi' => Informasi::first(),
             'title' => Berita::singleberita($slug)->judul
         ]);
     }
@@ -68,6 +72,7 @@ class HomeController extends Controller
             'title' => Profil::first() ? 'Sejarah '.Profil::first()->nama : 'Sejarah Instansi',
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
+            'informasi' => Informasi::first(),
             'berita' => Berita::beritalimit(3)
         ]);
     }
@@ -79,6 +84,7 @@ class HomeController extends Controller
             'title' => Profil::first() ? 'Visi & Misi '.Profil::first()->nama : 'Visi & Misi Instansi',
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
+            'informasi' => Informasi::first(),
             'berita' => Berita::beritalimit(3)
         ]);
     }
@@ -90,6 +96,7 @@ class HomeController extends Controller
             'title' => Profil::first() ? 'Visi & Misi '.Profil::first()->nama : 'Visi & Misi Instansi',
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
+            'informasi' => Informasi::first(),
             'berita' => Berita::beritalimit(3)
         ]);
     }
@@ -102,6 +109,7 @@ class HomeController extends Controller
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
             'berita' => Berita::beritalimit(3),
+            'informasi' => Informasi::first(),
             'foto' => Foto::allfoto()
         ]);
     }
@@ -114,6 +122,7 @@ class HomeController extends Controller
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
             'berita' => Berita::beritalimit(3),
+            'informasi' => Informasi::first(),
             'anggaran' => Anggaran::allanggaran()
         ]);
     }
@@ -126,6 +135,7 @@ class HomeController extends Controller
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
             'berita' => Berita::beritalimit(3),
+            'informasi' => Informasi::first(),
             'dokumen' => Dokumen::alldokumen()
         ]);
     }
@@ -138,6 +148,7 @@ class HomeController extends Controller
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
             'berita' => Berita::beritalimit(3),
+            'informasi' => Informasi::first(),
             'pengumuman' => Pengumuman::orderBy('created_at', 'DESC')->get()
         ]);
     }
@@ -150,7 +161,20 @@ class HomeController extends Controller
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
             'berita' => Berita::beritalimit(3),
+            'informasi' => Informasi::first(),
             'penghargaan' => Penghargaan::all()
+        ]);
+    }
+
+    public function maklumat()
+    {
+        return view('home.maklumat', [
+            'profil' => Profil::first(),
+            'title' => Profil::first() ? 'Maklumat Pelayanan '.Profil::first()->nama : 'Maklumat Pelayanan Instansi',
+            'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
+            'agenda' => Agenda::agendalimit('3'),
+            'berita' => Berita::beritalimit(3),
+            'informasi' => Informasi::first()
         ]);
     }
 
@@ -162,6 +186,7 @@ class HomeController extends Controller
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
             'berita' => Berita::beritalimit(3),
+            'informasi' => Informasi::first(),
             'pelayanan' => Pelayanan::all()
         ]);
     }
@@ -172,9 +197,34 @@ class HomeController extends Controller
             'profil' => Profil::first(),
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
+            'informasi' => Informasi::first(),
             'berita' => Berita::beritalimit(3),
             'pelayanan' => Pelayanan::where('id', $id)->first(),
             'title' => Pelayanan::where('id', $id)->first()->jenis
+        ]);
+    }
+
+    public function pengaduan()
+    {
+        return view('home.pengaduan', [
+            'profil' => Profil::first(),
+            'title' => Profil::first() ? 'Alur Pengaduan '.Profil::first()->nama : 'Alur Pengaduan Instansi',
+            'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
+            'agenda' => Agenda::agendalimit('3'),
+            'berita' => Berita::beritalimit(3),
+            'informasi' => Informasi::first()
+        ]);
+    }
+
+    public function ikm()
+    {
+        return view('home.ikm', [
+            'profil' => Profil::first(),
+            'title' => Profil::first() ? 'Indeks Kepuasan Masyarakat '.Profil::first()->nama : 'Indeks Kepuasan Masyarakat',
+            'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
+            'agenda' => Agenda::agendalimit('3'),
+            'berita' => Berita::beritalimit(3),
+            'informasi' => Informasi::first()
         ]);
     }
 

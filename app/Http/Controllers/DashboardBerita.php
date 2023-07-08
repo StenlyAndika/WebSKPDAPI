@@ -52,7 +52,7 @@ class DashboardBerita extends Controller
             'judul' => 'required',
             'slug' => 'required|unique:berita',
             'isi' => 'required',
-            'gambar' => 'image|file'
+            'gambar' => 'required|image|max:2048'
         ];
 
         $validatedData = $request->validate($rules);
@@ -104,7 +104,7 @@ class DashboardBerita extends Controller
         $rules = [
             'judul' => 'required',
             'isi' => 'required',
-            'gambar' => 'image|file'
+            'gambar' => 'required|image|max:2048'
         ];
 
         if ($request->slug != $berita->slug) {

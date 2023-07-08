@@ -80,7 +80,12 @@
                         <li><a href="{{ route('struktur') }}">Struktur Organisasi</a></li>
                     </ul>
                 </li>
-                <li><a class="nav-link" href="{{ route('pelayanan') }}">Standar Pelayanan</a></li>
+                <li class="dropdown"><a href="#">Pelayanan <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="{{ route('maklumat') }}">Maklumat Pelayanan</a></li>
+                        <li><a href="{{ route('pelayanan') }}">Standar Pelayanan</a></li>
+                    </ul>
+                </li>
                 <li class="dropdown"><a href="#">Galeri <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="{{ route('foto') }}">Foto</a></li>
@@ -94,10 +99,16 @@
                         <li><a href="{{ route('pengumuman') }}">Pengumuman</a></li>
                     </ul>
                 </li>
-                <li><a class="nav-link" href="#kontakkami">Kontak Kami</a></li>
-                {{-- @can('guest-only')
-                    <li><a class="nav-link" href="{{ route('login') }}">Masuk</a></li>
-                @endcan --}}
+                <li class="dropdown"><a href="#">Pengaduan <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="#kontakkami">Kontak Kami</a></li>
+                        <li><a href="{{ route('pengaduan') }}">Alur Pengaduan</a></li>
+                        <li><a href="https://lapor.go.id/" target="_blank">Lapor</a></li>
+                        <li><a href="@if(!empty($informasi->survey)) {{ $informasi->survey }} @endif" target="_blank">Survey Kepuasan Masyarakat</a></li>
+                        <li><a href="{{ route('ikm') }}">Indeks Kepuasan Masyarakat</a></li>
+                    </ul>
+                </li>
+                
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>

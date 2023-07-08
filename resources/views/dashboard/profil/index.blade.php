@@ -171,6 +171,24 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-1">
+                                            <input type="text" class="form-control @error('peta') is-invalid @enderror" id="peta" name="peta" placeholder="Peta" value="{{ old('peta') }}">
+                                            <label for="peta">Peta Lokasi</label>
+                                            @error('peta')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-1">
+                                            <a href="{{ route('admin.tutorial') }}" target="_blank" class="btn btn-md btn-success">Tutorial Pengambilan Lokasi</a>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Simpan</button>
                                     <a class="btn btn-sm btn-success" href="{{ route('admin.profil.index') }}">Kembali</a>
@@ -353,9 +371,36 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-1">
+                                            <input type="text" class="form-control @error('peta') is-invalid @enderror" id="peta" name="peta" placeholder="Peta" value="{{ base64_decode($profil->peta) }}">
+                                            <label for="peta">Peta Lokasi</label>
+                                            @error('peta')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                            <style>
+                                                iframe {
+                                                    width: 100% !important;
+                                                    max-height: 400px !important;
+                                                }
+                                            </style>
+                                            <div class="card-body">
+                                                {!! base64_decode($profil->peta) !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-1">
+                                            <a href="{{ route('admin.tutorial') }}" target="_blank" class="btn btn-md btn-success">Tutorial Pengambilan Lokasi</a>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
-                                    <a class="btn btn-sm btn-success" href="{{ route('admin.profil.index') }}">Kembali</a>
+                                    <button type="submit" class="btn btn-lg btn-primary">Simpan</button>
+                                    <a class="btn btn-md btn-success" href="{{ route('admin.profil.index') }}">Kembali</a>
                                 </div>
                             </form>
                         @endif

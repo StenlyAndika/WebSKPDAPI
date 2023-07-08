@@ -13,7 +13,9 @@ use App\Http\Controllers\DashboardDokumen;
 use App\Http\Controllers\DashboardService;
 use App\Http\Controllers\DashboardAnggaran;
 use App\Http\Controllers\DashboardKepuasan;
+use App\Http\Controllers\DashboardInformasi;
 use App\Http\Controllers\DashboardPelayanan;
+use App\Http\Controllers\DashboardPengaduan;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardDomainDesa;
 use App\Http\Controllers\DashboardDomainSKPD;
@@ -33,7 +35,10 @@ use App\Http\Controllers\DashboardPenghargaan;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
-Route::post('menu-utama/kontak', [HomeController::class, 'kontak'])->name('kontak');
+Route::get('pengaduan/kontak', [HomeController::class, 'kontak'])->name('kontak');
+Route::get('pengaduan/index', [HomeController::class, 'pengaduan'])->name('pengaduan');
+Route::get('pengaduan/survey', [HomeController::class, 'survey'])->name('survey');
+Route::get('pengaduan/ikm', [HomeController::class, 'ikm'])->name('ikm');
 
 Route::get('/berita/read/{slug}', [HomeController::class, 'read'])->name('berita.read');
 
@@ -41,6 +46,7 @@ Route::get('/profil/sejarah', [HomeController::class, 'sejarah'])->name('sejarah
 Route::get('/profil/visimisi', [HomeController::class, 'visimisi'])->name('visimisi');
 Route::get('/profil/struktur', [HomeController::class, 'struktur'])->name('struktur');
 
+Route::get('/pelayanan/maklumat', [HomeController::class, 'maklumat'])->name('maklumat');
 Route::get('/pelayanan/index', [HomeController::class, 'pelayanan'])->name('pelayanan');
 Route::get('/pelayanan/detail/{id}', [HomeController::class, 'detail'])->name('detail');
 
@@ -57,6 +63,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/tutorial', [DashboardController::class, 'tutorial'])->name('admin.tutorial');
     Route::delete('/dashboard{kontak}', [DashboardController::class, 'destroy'])->name('admin.dashboard.destroy');
 
     Route::get('/admin/berita', [DashboardBerita::class, 'index'])->name('admin.berita.index');
@@ -83,7 +90,13 @@ Route::middleware(['admin'])->group(function () {
     Route::put('/admin/anggaran/{anggaran}', [DashboardAnggaran::class, 'update'])->name('admin.anggaran.update');
     Route::delete('/admin/anggaran/{anggaran}', [DashboardAnggaran::class, 'destroy'])->name('admin.anggaran.destroy');
     Route::get('/admin/anggaran/checkSlug/{keterangan}', [DashboardAnggaran::class, 'checkSlug']);
-    
+
+    Route::get('/admin/informasi', [DashboardInformasi::class, 'index'])->name('admin.informasi.index');
+    Route::get('/admin/informasi/create', [DashboardInformasi::class, 'create'])->name('admin.informasi.create');
+    Route::post('/admin/informasi', [DashboardInformasi::class, 'store'])->name('admin.informasi.store');
+    Route::put('/admin/informasi/{informasi}', [DashboardInformasi::class, 'update'])->name('admin.informasi.update');
+    Route::delete('/admin/informasi/{informasi}', [DashboardInformasi::class, 'destroy'])->name('admin.informasi.destroy');
+
     Route::get('/admin/dokumen', [DashboardDokumen::class, 'index'])->name('admin.dokumen.index');
     Route::get('/admin/dokumen/create', [DashboardDokumen::class, 'create'])->name('admin.dokumen.create');
     Route::post('/admin/dokumen', [DashboardDokumen::class, 'store'])->name('admin.dokumen.store');

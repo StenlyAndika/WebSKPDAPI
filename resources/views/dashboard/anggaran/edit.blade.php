@@ -32,6 +32,7 @@
                                 @enderror
                             </div>
                             <div class="form-group mb-1">
+                                <label for="namafile">File (pdf)</label>
                                 <input type="file" id="namafile" class="form-control @error('namafile') is-invalid @enderror" name="namafile">
                                 @error('namafile')
                                     <div class="invalid-feedback">

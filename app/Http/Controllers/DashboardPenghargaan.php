@@ -68,10 +68,10 @@ class DashboardPenghargaan extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Anggaran $penghargaan
+     * @param  \App\Models\Penghargaan $penghargaan
      * @return \Illuminate\Http\Response
      */
-    public function show(Anggaran $penghargaan)
+    public function show(Penghargaan $penghargaan)
     {
         
     }
@@ -79,10 +79,10 @@ class DashboardPenghargaan extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Anggaran $penghargaan
+     * @param  \App\Models\Penghargaan $penghargaan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Anggaran $penghargaan)
+    public function edit(Penghargaan $penghargaan)
     {
         return view('dashboard.penghargaan.edit', [
             'title' => 'Edit Penghargaan'
@@ -93,10 +93,10 @@ class DashboardPenghargaan extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \App\Models\Anggaran $penghargaan
+     * @param  \App\Models\Penghargaan $penghargaan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Anggaran $penghargaan)
+    public function update(Request $request, Penghargaan $penghargaan)
     {
         $rules = [
             'keterangan' => 'required',
@@ -124,10 +124,10 @@ class DashboardPenghargaan extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Anggaran $penghargaan
+     * @param  \App\Models\Penghargaan $penghargaan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Anggaran $penghargaan)
+    public function destroy(Penghargaan $penghargaan)
     {
         if($penghargaan->namafile) {
             Storage::delete($penghargaan->namafile);

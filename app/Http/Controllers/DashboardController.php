@@ -15,6 +15,13 @@ class DashboardController extends Controller
         ]);
     }
 
+    public function tutorial()
+    {
+        return view('dashboard.profil.tutorial', [
+            'title' => 'Tutorial Pengambilan Lokasi'
+        ]);
+    }
+
     public function destroy(Kontak $kontak)
     {
         Kontak::destroy($kontak->id);

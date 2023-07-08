@@ -68,6 +68,12 @@
                 <span class="title">Foto</span>
             </a>
         </li>
+        <li class="list {{ Request::is('admin/informasi*') ? 'active' : '' }}">
+            <a href="{{ route('admin.informasi.index') }}">
+                <span class="icon"><i class="bi bi-card-checklist"></i></span>
+                <span class="title">Menu Informasi</span>
+            </a>
+        </li>
         <li class="list {{ Request::is('admin/pelayanan*') ? 'active' : '' }}">
             <a href="{{ route('admin.pelayanan.index') }}">
                 <span class="icon"><i class="bi bi-card-checklist"></i></span>

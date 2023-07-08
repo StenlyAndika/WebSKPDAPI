@@ -73,4 +73,19 @@
             @endif
         </div>
     </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header text-center">
+            <h6 class="m-0 fw-bold">ALAMAT KAMI</h6>
+        </div>
+        <style>
+            iframe {
+                width: 100% !important;
+                height: 350px !important;
+            }
+        </style>
+        <div class="card-body">
+            @if(!empty($profil->peta)) {!! base64_decode($profil->peta) !!} @endif
+        </div>
+    </div>
 </section>

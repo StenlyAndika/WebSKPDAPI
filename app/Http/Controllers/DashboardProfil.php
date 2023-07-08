@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 use App\Models\Profil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardProfil extends Controller
 {
@@ -46,9 +45,9 @@ class DashboardProfil extends Controller
         $rules = [
             'nama' => 'required',
             'kepala' => 'required',
-            'fotokepala' => 'image|file',
-            'logo' => 'image|file',
-            'struktur' => 'image|file'
+            'fotokepala' => 'image',
+            'logo' => 'image',
+            'struktur' => 'image'
         ];
 
         $validatedData = $request->validate($rules);
@@ -63,6 +62,7 @@ class DashboardProfil extends Controller
         $validatedData['fb'] = $request->fb;
         $validatedData['tw'] = $request->tw;
         $validatedData['ig'] = $request->ig;
+        $validatedData['peta'] = base64_encode($request->peta);
 
         if ($request->file('fotokepala')) {
             $validatedData['fotokepala'] = $request->file('fotokepala')->store('upload/profil');
@@ -75,7 +75,7 @@ class DashboardProfil extends Controller
         if ($request->file('struktur')) {
             $validatedData['struktur'] = $request->file('struktur')->store('upload/profil');
         }
-        
+
         Profil::create($validatedData);
 
         return redirect()->route('admin.profil.index')->with('success', 'Data berhasil ditambah!');
@@ -112,13 +112,12 @@ class DashboardProfil extends Controller
      */
     public function update(Request $request, Profil $profil)
     {
-        // dd($request);
         $rules = [
             'nama' => 'required',
             'kepala' => 'required',
-            'fotokepala' => 'image|file',
-            'logo' => 'image|file',
-            'struktur' => 'image|file'
+            'fotokepala' => 'image',
+            'logo' => 'image',
+            'struktur' => 'image'
         ];
 
         $validatedData = $request->validate($rules);
@@ -132,6 +131,7 @@ class DashboardProfil extends Controller
         $validatedData['fb'] = $request->fb;
         $validatedData['tw'] = $request->tw;
         $validatedData['ig'] = $request->ig;
+        $validatedData['peta'] = base64_encode($request->peta);
 
         if ($request->file('fotokepala')) {
             if($request->oldImage) {

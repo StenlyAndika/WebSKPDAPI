@@ -36,6 +36,7 @@
                                 <trix-editor input="isi"></trix-editor>
                             </div>
                             <div class="form-group mb-1">
+                                <label for="gambar">Gambar (jpg,jpeg,png)</label>
                                 <input type="file" id="gambar" class="form-control @error('gambar') is-invalid @enderror" name="gambar" onchange="previewImage()">
                                 @error('gambar')
                                     <div class="invalid-feedback">
