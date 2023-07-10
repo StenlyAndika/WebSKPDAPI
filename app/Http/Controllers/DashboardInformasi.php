@@ -61,6 +61,10 @@ class DashboardInformasi extends Controller
             $validatedData['ikm'] = $request->file('ikm')->store('upload/informasi');
         }
 
+        if ($request->file('pakta')) {
+            $validatedData['pakta'] = $request->file('pakta')->store('upload/informasi');
+        }
+
         Informasi::create($validatedData);
 
         return redirect()->route('admin.informasi.index')->with('success', 'Data berhasil ditambah!');
@@ -123,6 +127,13 @@ class DashboardInformasi extends Controller
                 Storage::delete($request->oldImage3);
             }
             $validatedData['ikm'] = $request->file('ikm')->store('upload/informasi');
+        }
+
+        if ($request->file('pakta')) {
+            if($request->oldImage4) {
+                Storage::delete($request->oldImage4);
+            }
+            $validatedData['pakta'] = $request->file('pakta')->store('upload/informasi');
         }
 
         Informasi::where('id', $informasi->id)->update($validatedData);

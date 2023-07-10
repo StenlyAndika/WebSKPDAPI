@@ -65,6 +65,18 @@
                                             <img class="img-preview3 img-fluid col-lg-8 mt-2 w-50">
                                         </div>
                                     </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group mb-1">
+                                            <label for="pakta">Pakta Integritas (jpg, jpeg, png)</label>
+                                            <input type="file" id="pakta" class="form-control @error('pakta') is-invalid @enderror" name="pakta" onchange="previewImage4()">
+                                            @error('pakta')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                            <img class="img-preview4 img-fluid col-lg-8 mt-2 w-50">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Simpan</button>
@@ -134,11 +146,28 @@
                                                     {{ $message }}
                                                 </div>
                                             @enderror
-                                            <input type="hidden" name="oldImage2" value="{{ $informasi->ikm }}">
+                                            <input type="hidden" name="oldImage3" value="{{ $informasi->ikm }}">
                                             @if ($informasi->ikm)
                                                 <img class="img-preview3 img-fluid col-lg-8 mt-2 w-50" src="{{ asset('storage/'.$informasi->ikm) }}">
                                             @else
                                                 <img class="img-preview3 img-fluid col-lg-8 mt-2 w-50">
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group mb-1">
+                                            <label for="pakta">Pakta Integritas (jpg, jpeg, png)</label>
+                                            <input type="file" id="pakta" class="form-control @error('pakta') is-invalid @enderror" name="pakta" onchange="previewImage4()">
+                                            @error('pakta')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                            <input type="hidden" name="oldImage4" value="{{ $informasi->pakta }}">
+                                            @if ($informasi->pakta)
+                                                <img class="img-preview4 img-fluid col-lg-8 mt-2 w-50" src="{{ asset('storage/'.$informasi->pakta) }}">
+                                            @else
+                                                <img class="img-preview4 img-fluid col-lg-8 mt-2 w-50">
                                             @endif
                                         </div>
                                     </div>
@@ -188,6 +217,20 @@
         function previewImage3() {
             const image = document.querySelector('#ikm');
             const imagePreview = document.querySelector('.img-preview3');
+
+            imagePreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function (oFREvent) {
+                imagePreview.src = oFREvent.target.result;
+            }
+        }
+
+        function previewImage4() {
+            const image = document.querySelector('#pakta');
+            const imagePreview = document.querySelector('.img-preview4');
 
             imagePreview.style.display = 'block';
 

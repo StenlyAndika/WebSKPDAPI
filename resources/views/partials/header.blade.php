@@ -84,6 +84,7 @@
                     <ul>
                         <li><a href="{{ route('maklumat') }}">Maklumat Pelayanan</a></li>
                         <li><a href="{{ route('pelayanan') }}">Standar Pelayanan</a></li>
+                        <li><a href="{{ route('pakta') }}">Pakta Integritas</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a href="#">Galeri <i class="bi bi-chevron-down"></i></a>

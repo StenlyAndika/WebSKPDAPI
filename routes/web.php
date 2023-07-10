@@ -47,6 +47,7 @@ Route::get('/profil/visimisi', [HomeController::class, 'visimisi'])->name('visim
 Route::get('/profil/struktur', [HomeController::class, 'struktur'])->name('struktur');
 
 Route::get('/pelayanan/maklumat', [HomeController::class, 'maklumat'])->name('maklumat');
+Route::get('/pelayanan/pakta', [HomeController::class, 'pakta'])->name('pakta');
 Route::get('/pelayanan/index', [HomeController::class, 'pelayanan'])->name('pelayanan');
 Route::get('/pelayanan/detail/{id}', [HomeController::class, 'detail'])->name('detail');
 

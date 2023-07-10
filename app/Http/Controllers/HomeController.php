@@ -21,11 +21,13 @@ use App\Models\Pengumuman;
 use App\Models\Penghargaan;
 use Illuminate\Http\Request;
 use App\Models\DashboardProfil;
+// use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
     public function home()
     {
+        // DB::statement("ALTER TABLE `informasi` ADD `pakta` TEXT NULL DEFAULT NULL AFTER `maklumat`");
         return view('home.index', [
             'title' => Profil::first() ? 'Website Resmi '.Profil::first()->nama : 'Website Resmi Instansi',
             'profil' => Profil::first(),
@@ -221,6 +223,18 @@ class HomeController extends Controller
         return view('home.ikm', [
             'profil' => Profil::first(),
             'title' => Profil::first() ? 'Indeks Kepuasan Masyarakat '.Profil::first()->nama : 'Indeks Kepuasan Masyarakat',
+            'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
+            'agenda' => Agenda::agendalimit('3'),
+            'berita' => Berita::beritalimit(3),
+            'informasi' => Informasi::first()
+        ]);
+    }
+
+    public function pakta()
+    {
+        return view('home.pakta', [
+            'profil' => Profil::first(),
+            'title' => Profil::first() ? 'Pakta Integritas '.Profil::first()->nama : 'Pakta Integritas',
             'kepuasan' => Kepuasan::orderBy('tahun', 'DESC')->limit(5)->get(),
             'agenda' => Agenda::agendalimit('3'),
             'berita' => Berita::beritalimit(3),
